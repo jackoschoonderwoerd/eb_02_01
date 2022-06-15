@@ -1,0 +1,36 @@
+.category {
+	// padding: 1rem;
+	// border: 3px solid blue;
+	.admin {
+		background-color: aqua;
+		.header {
+			color: blue;
+			text-transform: uppercase;
+		}
+		.id {
+		}
+		.seq-no_edit_trash {
+			.edit {
+			}
+			.trash {
+			}
+		}
+		.open-add-drink {
+			border: 3px solid green;
+		}
+	}
+}
+.category-name {
+	background-color: var(--orange);
+	color: var(--blue);
+	padding: 1rem;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.child-components {
+	hr {
+		margin: 0;
+		width: 80%;
+		opacity: 0.3;
+	}
+}

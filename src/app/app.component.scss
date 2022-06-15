@@ -1,0 +1,80 @@
+mat-sidenav-container,
+mat-sidenav-content,
+mat-sidenav {
+	// background-color: var(--header-blue);
+	height: 100%;
+}
+
+mat-sidenav {
+	color: var(--bright-orange);
+	background-color: var(--blue);
+}
+
+mat-sidenav {
+	min-width: 200px;
+	max-width: 300px;
+	padding: 1rem;
+}
+app-header {
+	position: fixed;
+	width: 100vw;
+	z-index: 5000;
+}
+mat-sidenav-content {
+	// background-color: var(--bright-orange);
+
+	app-header {
+		// background-color: var(--blue);
+		position: fixed;
+		width: 100vw;
+		z-index: 5000;
+	}
+	main {
+		margin-top: 56px;
+		@media (min-width: 600px) {
+			margin-top: 64px;
+		}
+		.router-container {
+		}
+	}
+}
+
+// mat-sidenav-container,
+// mat-sidenav-content,
+// mat-sidenav {
+// 	height: 100%;
+// }
+
+// mat-sidenav-container {
+// 	mat-sidenav {
+// 		width: 250px;
+// 		app-sidenav {
+// 		}
+// 	}
+// }
+
+// mat-sidenav-content {
+// 	margin-top: 61px;
+// 	height: calc(100vh - 61px);
+// }
+
+// .router-container {
+// 	@media (min-width: 600px) {
+// 		height: calc(100vh - 112px);
+// 	}
+// }
+
+// app-footer {
+// 	position: fixed;
+// 	bottom: 0;
+// 	width: 100%;
+// 	background-color: var(--blue);
+// 	color: var(--bright-orange);
+// 	padding: 1rem;
+// }
+
+// app-header {
+// 	z-index: 1000;
+// 	position: fixed;
+// 	width: 100%;
+// }

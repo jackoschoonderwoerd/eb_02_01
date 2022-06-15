@@ -1,0 +1,13 @@
+.page-container {
+	background-color: var(--blue);
+	color: var(--bright-orange);
+	padding: 1rem;
+	border: 3px solid var(--orange);
+	.name {
+		font-size: 1.2rem;
+		text-transform: capitalize;
+	}
+	.window-close {
+		font-size: 1.5rem;
+	}
+}

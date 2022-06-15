@@ -1,0 +1,47 @@
+<div class="main-container">
+  <div
+    class="admin"
+    *ngIf="authStore.isLoggedIn$|async"
+    fxLayout
+    fxLayoutAlign="space-between">
+    <div class="seq-no">
+      {{beer.seqNo}}
+    </div>
+    <div class="edit_delete" fxLayout fxLayoutGap="1rem">
+      <div
+        class="edit"
+        (click)="onEdit(beer)">
+        <span class="fas fa-edit"></span>
+      </div>
+      <div
+        class="delete"
+        (click)="onDelete(beer.id)">
+        <span class="fas fa-trash"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="customer" fxLayout fxLayoutAlign="space-between center center">
+    <div class="info_name" fxLayout fxLayoutGap="1rem" fxLayoutAlign="center center">
+      <div class="info" (click)="onInfo()">
+        <!-- <span class="fas fa-info"></span> -->
+        <span><i class="far fa-question-circle"></i></span>
+      </div>
+      <div class="vessel">
+        <span *ngIf="beer.vessel == 'bottle'"><i class="fas fa-wine-bottle"></i></span>
+        <span *ngIf="beer.vessel == 'glass'"><i class="fas fa-wine-glass"></i></span>
+      </div>
+      <div class="name">
+        {{beer.name}}
+      </div>
+    </div>
+    <div class="price_order" fxLayout fxLayoutGap="1rem">
+      <div class="price">
+        {{beer.price|currency:"EUR"}}
+      </div>
+      <div *ngIf="(uiStore.onLineOrdering$|async)" class="order" (click)="onOrder()">
+        <span class=" fas fa-plus"></span>
+      </div>
+    </div>
+  </div>
+</div>

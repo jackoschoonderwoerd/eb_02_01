@@ -1,0 +1,237 @@
+<div class="main-container" fxLayout fxLayoutAlign="center">
+  <div class="content" fxLayout="column" fxLayoutGap="1rem">
+    <div class="table-number-container">
+      <div class="table-number" fxLayout="column" *ngIf="orderStore.tableNumber$|async">
+        table number:&nbsp;{{(order$|async).tableNumber}}
+      </div>
+      <form
+        *ngIf="!(orderStore.tableNumber$|async)"
+        fxLayout="column"
+        fxLayoutGap="1rem"
+        [formGroup]="tableNumberForm"
+        class="enter-table-number">
+        <div class="header">enter table number</div>
+        <mat-form-field>
+          <input
+            type="number"
+            matInput
+            formControlName="tableNumber">
+        </mat-form-field>
+        <button mat-raised-button (click)="onSubmitTableNumber()">submit</button>
+        <button mat-raised-button (click)="onCancelOrder()">cancel order</button>
+      </form>
+    </div>
+
+    <div
+      class="selected-products"
+      *ngIf="(orderStore.tableNumber$|async)"
+      fxLayout="column" fxLayoutGap=".3rem">
+      <div class="header">selected drinks</div>
+      <hr>
+      <div class="ordered-drinks-container" fxLayout="column" fxLayoutGap=".5rem">
+        <div
+          class="ordered-drinks" fxLayout="column" fxLayoutGap=".5rem"
+          *ngIf="((order$|async).orderedDrinks.length > 0)">
+          <div
+            class="ordered-drink"
+            fxLayout
+            fxLayoutAlign="space-between"
+            *ngFor="let orderedDrink of (order$|async).orderedDrinks">
+            <div class="name">
+              <span *ngIf="(uiStore.language$|async) == 'nl'">{{orderedDrink.drink.nameDutch}}</span>
+              <span *ngIf="(uiStore.language$|async) == 'en'">{{orderedDrink.drink.nameEnglish}}</span>
+            </div>
+            <div class="amount_price"
+              fxLayout
+              fxLayoutGap="1rem">
+              <div class="amount">{{orderedDrink.amount}}</div>
+              <div class="price">{{orderedDrink.drink.price * orderedDrink.amount|currency:"EUR"}}</div>
+              <div class="plus" (click)="onAddDrinkToOrder(orderedDrink)"><span class="fas fa-plus"></span></div>
+              <div
+                class="minus_trash"
+                (click)="onRemoveDrinkFromOrder(orderedDrink)">
+                <span *ngIf="orderedDrink.amount > 1" class="fas fa-minus"></span>
+                <span *ngIf="orderedDrink.amount === 1" class="fas fa-trash"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a routerLink="drinks">soft</a>
+        <div class="add-buttons">
+          <div class="add-drinks" fxLayout="column" fxLayoutGap="1rem">
+            <div class="add-drinks-top" fxLayout fxLayoutGap="1rem">
+
+              <button
+
+                (click)="onAddMoreDrinks('coffee and tea')"
+                mat-raised-button class="plus-drinks">
+                <div class="plus-drinks-content" fxLayout fxLayoutAlign="center center" fxLayoutGap=".2rem">
+
+                  <div class="fas fa-plus"></div>
+                  <div class="">coffee & tea</div>
+
+                </div>
+              </button>
+
+              <button
+                (click)="onAddMoreDrinks('soft drinks')"
+                mat-raised-button class="plus-drinks">
+                <div class="plus-drinks-content" fxLayout fxLayoutAlign="center center" fxLayoutGap=".2rem">
+                  <div class="fas fa-plus"></div>
+
+                  <div class="">soft drinks</div>
+                </div>
+              </button>
+
+            </div>
+
+            <div class="add-drinks-bottom" fxLayout fxLayoutGap="1rem">
+
+              <button (click)="onAddMoreDrinks('wine')" mat-raised-button class="plus-drinks">
+                <div class="plus-drinks-content" fxLayout fxLayoutAlign="center center" fxLayoutGap=".2rem">
+                  <div class="fas fa-plus"></div>
+                  <div class="">wine</div>
+                </div>
+              </button>
+
+              <button (click)="onAddMoreDrinks('foreign spirits')" mat-raised-button class="plus-drinks">
+                <div class="plus-drinks-content" fxLayout fxLayoutAlign="center center" fxLayoutGap=".2rem">
+                  <div class="fas fa-plus"></div>
+                  <div class="">spirits</div>
+                </div>
+              </button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="selected-products"
+      *ngIf="(orderStore.tableNumber$|async)">
+      <div class="header">selected Beers</div>
+      <hr>
+      <div class="ordered-drinks-container" fxLayout="column" fxLayoutGap=".5rem">
+        <div
+          class="ordered-drinks" fxLayout="column" fxLayoutGap=".7rem"
+          *ngIf="(order$|async).orderedBeers.length > 0">
+          <div
+            class="ordered-drink"
+            fxLayout
+            fxLayoutAlign="space-between"
+            *ngFor="let orderedBeer of (order$|async).orderedBeers">
+            <div class="name">{{orderedBeer.beer.name}}</div>
+            <div class="amount_price"
+              fxLayout
+              fxLayoutGap="1rem">
+              <div class="amount">{{orderedBeer.amount}}</div>
+              <div class="price">{{orderedBeer.beer.price * orderedBeer.amount|currency:"EUR"}}</div>
+              <div class="plus" (click)="onAddBeerToOrder(orderedBeer)"><span class="fas fa-plus"></span></div>
+              <div
+                class="minus_trash"
+                (click)="onRemoveBeerFromOrder(orderedBeer)">
+                <span *ngIf="orderedBeer.amount > 1" class="fas fa-minus"></span>
+                <span *ngIf="orderedBeer.amount === 1" class="fas fa-trash"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="add-buttons">
+          <button mat-raised-button class="plus-beers" (click)="onAddMoreBeers()">
+            <div class="plus-beers-content" fxLayout fxLayoutGap=".2rem" fxLayoutAlign="center center">
+              <div class="fas fa-plus"></div>
+              <div class="">beers</div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="selected-products"
+      *ngIf="(orderStore.tableNumber$|async)">
+      <div class="header">selected food</div>
+      <hr>
+      <div class="ordered-drinks-container" fxLayout="column" fxLayoutGap=".5rem">
+
+        <div class="ordered-drinks" fxLayout="column" fxLayoutGap=".7rem"
+          *ngIf="((order$|async).orderedDishes.length > 0)">
+          <div
+            class="ordered-drink"
+            fxLayout
+            fxLayoutAlign="space-between"
+            *ngFor="let orderedDish of (order$|async).orderedDishes">
+            <div class="name">{{orderedDish.dish.name}}</div>
+            <div class="amount_price"
+              fxLayout
+              fxLayoutGap="1rem">
+              <div class="amount">{{orderedDish.amount}}</div>
+              <div class="price">{{orderedDish.dish.price * orderedDish.amount|currency:"EUR"}}</div>
+              <div class="plus" (click)="onAddDishToOrder(orderedDish)"><span class="fas fa-plus"></span></div>
+              <div
+                class="minus_trash"
+                (click)="onRemoveDishFromOrder(orderedDish)">
+                <span *ngIf="orderedDish.amount === 1" class="fas fa-trash"></span>
+                <span *ngIf="orderedDish.amount > 1" class="fas fa-minus"></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="add-buttons" fxLayout fxLayoutGap=".3rem">
+          <button mat-raised-button class="add-food" (click)="onAddMoreSnacks()">
+            <div class="add" fxLayout fxLayoutGap=".2rem" fxLayoutAlign="center center">
+              <div class="fas fa-plus"></div>
+              <div class="">snacks</div>
+            </div>
+          </button>
+          <button mat-raised-button class="add-food" (click)="onAddMoreLunch()">
+            <div class="add" fxLayout fxLayoutGap=".2rem" fxLayoutAlign="center center">
+              <div class="fas fa-plus"></div>
+              <div class="">lunch</div>
+            </div>
+          </button>
+          <button mat-raised-button class="add-food" (click)="onAddMoreDinner()">
+            <div class="add" fxLayout fxLayoutGap=".2rem" fxLayoutAlign="center center">
+              <div class="fas fa-plus"></div>
+              <div class="">dinner</div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="total-price-container"
+      fxLayout
+      fxLayoutAlign="space-between"
+      *ngIf="(order$|async).totalPrice > 0 && (order$|async).tableNumber">
+      <div class="total">total:</div>
+      <div fxLayout fxLayoutGap="1rem">
+        <div class="total-price">
+          <!-- {{totalPrice$|async|currency:"EUR"}} -->
+          {{(order$|async).totalPrice|currency:"EUR"}}
+        </div>
+      </div>
+    </div>
+
+
+    <div
+      *ngIf="(orderStore.tableNumber$|async)"
+      class="buttons" fxLayout="column" fxLayoutGap=".5rem">
+      <!-- <div
+        fxLayout="column" fxLayoutGap="2rem"
+        > -->
+      <button (click)="onPlaceOrder()" mat-raised-button *ngIf="(order$|async).totalPrice != 0">place order</button>
+      <!-- </div> -->
+      <button mat-raised-button (click)="onCancelOrder()">cancel order</button>
+      <button
+        mat-raised-button
+        (click)="onHome()">
+        <span class="fas fa-home"></span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+.drink {
+	// margin-top: 0.2rem;
+	// border-bottom: 1px solid black;
+	.admin {
+		background-color: lightgreen;
+		padding: 1rem;
+		.header {
+			color: green;
+			text-transform: uppercase;
+		}
+		.id {
+		}
+		.seq-no_edit_trash {
+			.seq-no {
+			}
+			.edit {
+			}
+			.trash {
+			}
+		}
+	}
+	.customer {
+		padding: 1rem;
+		// background-color: green;
+		color: var(--bright-orange);
+		.name_vessel {
+			// border: 1px solid white;
+			.name {
+				text-transform: capitalize;
+			}
+		}
+		.price_order {
+			.price {
+			}
+			.order {
+				// border: 2px solid black;
+				// border-radius: 50%;
+				// padding: 0.2rem 0.3rem;
+			}
+		}
+	}
+}

@@ -1,0 +1,63 @@
+<div
+  class="main-container"
+  fxLayout
+  fxLayoutAlign="center">
+  <div class="form-container">
+    <form
+      [formGroup]="form"
+      fxLayout="column">
+      <div *ngIf="!editMode" class="category-name"> adding drink to: {{category.name}}</div>
+      <mat-form-field>
+        <input
+          type="number"
+          matInput
+          formControlName="seqNo"
+          placeholder="sequential number">
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          formControlName="nameDutch"
+          placeholder="name dutch">
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          formControlName="nameEnglish"
+          placeholder="name english">
+      </mat-form-field>
+
+      <mat-radio-group formControlName="vessel">
+        <mat-radio-button value="glass">glass</mat-radio-button>
+        <mat-radio-button value="bottle">bottle</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field>
+        <input
+          type="number"
+          matInput
+          formControlName="price"
+          placeholder="price">
+      </mat-form-field>
+      <div
+        class="buttons"
+        fxLayout="column"
+        fxLayoutGap="1rem">
+        <button
+          color="primary"
+          mat-raised-button
+          (click)="onSubmit()">
+          {{editMode ? 'update drink' : 'add drink'}}
+        </button>
+        <button
+          color="primary"
+          mat-raised-button
+          mat-dialog-close>
+          abort
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

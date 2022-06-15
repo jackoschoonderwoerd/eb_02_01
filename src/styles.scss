@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./styles/variables";
+@import "./styles/mixins";
+
+* {
+	box-sizing: border-box;
+	letter-spacing: 1.2px;
+}
+
+html,
+body {
+	height: 100vh;
+}
+body {
+	margin: 0;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+button {
+	text-transform: uppercase;
+	color: black;
+}
+a {
+	color: var(--bright-orange);
+	text-decoration: none;
+}
+
+.full-screen .mat-dialog-container {
+	margin: 0;
+	border: none;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.beer-info-dialog .mat-dialog-container {
+	padding: 0;
+}
+
+.mat-dialog-container {
+	// background-color: var(--blue);
+}

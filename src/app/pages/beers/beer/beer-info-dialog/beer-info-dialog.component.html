@@ -1,0 +1,31 @@
+<div class="page-container" fxLayout="column" fxLayoutGap="1rem">
+  <div class="name">
+    {{beer.name}}
+  </div>
+  <div class="description">
+    {{beer.description}}
+  </div>
+  <div class="vessel">
+    <span *ngIf="beer.vessel == 'bottle'"><i class="fas fa-wine-bottle"></i></span>
+    <span *ngIf="beer.vessel == 'glass'"><i class="fas fa-wine-glass"></i></span>
+    {{beer.vessel}}
+  </div>
+  <div *ngIf="beer.clVolume" class="cl-volume">
+    <span>content: </span>{{beer.clVolume}}&nbsp;cl.
+  </div>
+  <div *ngIf="beer.alcoholPercentage" class="alcohol-percentage">
+    <span>percentage: </span>{{beer.alcoholPercentage}}&nbsp;%
+  </div>
+  <div class="price_window-close" fxLayout fxLayoutAlign="space-between">
+    <div class="price">
+      {{beer.price|currency:"EUR"}}
+    </div>
+    <div
+      class="window-close"
+      mat-dialog-close
+      fxLayout
+      fxLayoutAlign="end">
+      <span class="fas fa-window-close"></span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="page-container" fxLayout fxLayoutGap="1rem">
+  <form [formGroup]="form" fxLayout="column" fxLayoutGap="1rem">
+    <input *ngIf="!editMode" type="file" (change)="onChange($event)">
+
+    <mat-form-field appearance="fill">
+      <input
+        type="number"
+        matInput
+        formControlName="seqNo"
+        placeholder="sequential number">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        type="text"
+        matInput
+        formControlName="title"
+        placeholder="title">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        type="text"
+        matInput
+        formControlName="artistName"
+        placeholder="artist name">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        type="text"
+        matInput
+        formControlName="copyrightOwner"
+        placeholder="copyright owner">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        type="number"
+        matInput
+        formControlName="price"
+        placeholder="price">
+    </mat-form-field>
+    <button mat-raised-button [disabled]="storageIncomplete || form.invalid" (click)="onAddImage()">store image</button>
+    <button mat-raised-button (click)="onCancel()">cancel</button>
+  </form>
+  <div *ngIf="filePath" class="preview">
+    <img class="image" [src]="filePath" alt="">
+  </div>
+</div>

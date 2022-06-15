@@ -1,0 +1,14 @@
+.page-container {
+	background-color: white;
+	padding: 2rem;
+	form {
+		max-width: 16rem;
+	}
+	.preview {
+		display: grid;
+		max-width: 400px;
+		.image {
+			width: 100%;
+		}
+	}
+}

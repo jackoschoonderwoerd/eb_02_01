@@ -1,0 +1,104 @@
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { map, Observable, tap, timestamp } from 'rxjs';
+
+// import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
+// import { Order } from 'src/app/shared/models/order.model';
+// import { OrderStore } from 'src/app/shared/stores/order.store';
+import { Drink } from '../../../drinks.models';
+// import { OrderBeingProcessedComponent } from './order-being-processed/order-being-processed.component';
+import { OrderedDrink } from './order-drink.model';
+
+
+@Component({
+	selector: 'app-order-drink-dialog',
+	templateUrl: './order-drink-dialog.component.html',
+	styleUrls: ['./order-drink-dialog.component.scss']
+})
+export class OrderDrinkDialogComponent implements OnInit {
+
+	drink: Drink
+
+	tableNumberForm: FormGroup
+	productPrice: number
+	orderedDrinks: OrderedDrink[] = [];
+	initialAmount: number = 1
+	orderedDrinks$: Observable<OrderedDrink[]>;
+	totalPrice$: Observable<number>;
+	// order$: Observable<Order>
+
+
+	constructor(
+		private fb: FormBuilder,
+		@Inject(MAT_DIALOG_DATA) private data: any,
+		// public orderStore: OrderStore,
+		private dialog: MatDialog
+	) { }
+
+
+	ngOnInit(): void {
+		// this.initTableNumberForm();
+		// this.order$ = this.orderStore.getOrder();
+		// // this.orderedDrinks$ = this.orderStore.getAllOrderedDrinks();
+
+		// this.totalPrice$ = this.orderStore.getTotalPrice();
+		// if (this.data) {
+		// 	this.drink = this.data.drink;
+		// 	// this.productPrice = this.drink.price;
+		// 	const orderedDrink: OrderedDrink = {
+		// 		drink: this.drink,
+		// 		amount: 1
+		// 	}
+		// 	this.orderStore.addDrinkToOrder(orderedDrink)
+		// }
+		// this.orderStore.checkLocalStorage();
+		// this.orderStore.calculateTotal();
+	}
+
+	// initTableNumberForm() {
+	// 	this.tableNumberForm = this.fb.group({
+	// 		tableNumber: new FormControl(null, [Validators.required])
+	// 	})
+	// }
+
+	// onSubmitTableNumber() {
+	// 	this.orderStore.addTablenumberToOrder(this.tableNumberForm.value.tableNumber)
+	// }
+
+	// onAddToOrder(orderedDrink: OrderedDrink) {
+	// 	this.orderStore.addDrinkToOrder(orderedDrink);
+	// 	// this.orderStore.addDrinkToOrder(this.data.drink);
+	// }
+
+
+	// onDecreaseAmount(orderedDrink: OrderedDrink) {
+	// 	this.orderStore.decreaseAmountDrink(orderedDrink);
+	// }
+	// onCancelOrder() {
+	// 	const drialogRef = this.dialog.open(ConfirmationDialogComponent, {
+	// 		data: {
+	// 			name: 'order'
+	// 		}
+	// 	});
+	// 	drialogRef.afterClosed().subscribe(res => {
+	// 		if (res) {
+	// 			this.orderStore.cancelOrder();
+	// 			this.dialog.closeAll();
+	// 		}
+	// 	})
+
+	// }
+	// onPlaceOrder() {
+	// 	this.orderStore.placeOrder()
+	// 		.then(res => {
+	// 			console.log('success');
+	// 			this.dialog.open(OrderBeingProcessedComponent, {
+	// 				data: {
+	// 					message: 'Your order is being processed'
+	// 				}
+	// 			})
+	// 		})
+	// 		.catch(err => console.log(err));
+	// }
+}

@@ -1,0 +1,20 @@
+<div class="page-container">
+  <div class="buttons-container">
+    <div class="page-sections" fxLayout [ngClass]="{'animated fadeOut': animationActive}">
+
+      <div class="previous page-section" (click)="selectedIcon('previous')" fxLayout
+        fxLayoutAlign="center center">
+        <i *ngIf="imagesLength > 1" class="far fa-arrow-alt-circle-left"></i>
+      </div>
+      <div
+        class="close page-section" (click)="selectedIcon('close')" fxLayout
+        fxLayoutAlign="center center">
+        <i class="far fa-times-circle"></i>
+      </div>
+      <div class=" next page-section" (click)="selectedIcon('next')" fxLayout
+        fxLayoutAlign="center center">
+        <i *ngIf="imagesLength > 1" class="far fa-arrow-alt-circle-right"></i>
+      </div>
+    </div>
+  </div>
+</div>

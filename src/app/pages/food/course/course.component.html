@@ -1,0 +1,55 @@
+<div class="course-component-container">
+  <div
+    class="admin"
+    fxLayout="column"
+    fxLayoutGap=".3rem"
+    *ngIf="authStore.isLoggedIn$|async">
+    <div
+      class="header">
+      COURSE COMPONENT
+    </div>
+    <div
+      class="seqNo_buttons"
+      fxLayout
+      fxLayoutAlign="space-between">
+      <div class="seq-no">
+        <span>Seq. No:&nbsp;</span><span>{{course.seqNo}}</span><br>
+        <span>{{course.courseNameEnglish}}</span><br>
+      </div>
+      <div
+        class="buttons"
+        fxLayout
+        fxLayoutGap="1rem">
+        <div
+          class="edit"
+          (click)="onEditCourse(course)"><span class="fas fa-edit"></span>
+        </div>
+        <div
+          class="delete"
+          *ngIf="authStore.isLoggedIn$|async"
+          (click)="onDeleteCourse($event, course)"><span class="fas fa-trash"></span>
+        </div>
+      </div>
+    </div>
+    <div class="add-dish" fxLayout fxLayoutAlign="space-between">
+      <button mat-raised-button (click)="onOpenAddDishDialog()">open add dish dialog</button>
+    </div>
+  </div>
+
+  <div
+    class="customer" *ngIf="course.courseNameDutch || course.courseNameEnglish">
+    <div *ngIf="(uiStore.language$|async) === 'nl'" class="name">{{course.courseNameDutch}}</div>
+    <div *ngIf="(uiStore.language$|async) === 'en'" class="name">{{course.courseNameEnglish}}</div>
+  </div>
+
+
+  <div class="app-dish-container">
+    <app-dish *ngFor="let dish of dishes$|async"
+      [courseIn]="courseOut"
+      [dish]="dish"
+      [mealTypeIn]="mealType">
+    </app-dish>
+  </div>
+
+
+</div>

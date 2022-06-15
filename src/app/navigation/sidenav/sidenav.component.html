@@ -1,0 +1,82 @@
+<mat-nav-list>
+  <a
+    mat-list-item
+    routerLink="/home"
+    (click)="onClose()">
+    home
+  </a>
+  <a
+    mat-list-item
+    class="link drinks"
+    [routerLink]="['drinks']"
+    (click)="onClose()">
+    <span *ngIf="(uiStore.language$|async) === 'en'">drinks</span>
+    <span *ngIf="(uiStore.language$|async) === 'nl'">dranken</span>
+  </a>
+  <a
+    mat-list-item
+    class="link beers"
+    [routerLink]="['beers']"
+    (click)="onClose()">
+    <span *ngIf="(uiStore.language$|async) === 'en'">beers</span>
+    <span *ngIf="(uiStore.language$|async) === 'nl'">bieren</span>
+  </a>
+  <a
+    mat-list-item
+    class="link snacks"
+    [routerLink]="['food']"
+    [queryParams]="{mealType: 'snacks'}"
+    (click)="onClose()">
+    snacks
+  </a>
+  <a
+    mat-list-item
+    class="link lunch"
+    [routerLink]="['food']"
+    [queryParams]="{mealType: 'lunch'}"
+    (click)="onClose()">
+    lunch
+  </a>
+  <a
+    mat-list-item
+    class="link dinner"
+    [routerLink]="['food']"
+    [queryParams]="{mealType: 'dinner'}"
+    (click)="onDinner()">
+    <span *ngIf="(uiStore.language$|async) === 'en'">dinner</span>
+    <span *ngIf="(uiStore.language$|async) === 'nl'">diner</span>
+  </a>
+  <a
+    mat-list-item
+    class="link exhibitions"
+    [routerLink]="['exhibitions']"
+    (click)="onClose()">
+    <span *ngIf="(uiStore.language$|async) === 'en'">exhibitions</span>
+    <span *ngIf="(uiStore.language$|async) === 'nl'">exposities</span>
+  </a>
+  <a
+    *ngIf="authStore.isLoggedIn$|async"
+    mat-list-item
+    class="link bar"
+    [routerLink]="['company/bar']"
+    (click)="onClose()">
+    bar
+  </a>
+  <a
+    *ngIf="authStore.isLoggedOut$|async"
+    mat-list-item
+    class="link login"
+    routerLink="auth/login"
+    (click)="onClose()">
+    log in
+  </a>
+  <a
+    mat-list-item
+    class="link logout"
+    *ngIf="authStore.isLoggedIn$|async"
+    (click)="onLogOut()">
+    log out
+  </a>
+
+
+</mat-nav-list>

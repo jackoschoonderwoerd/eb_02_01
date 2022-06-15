@@ -1,0 +1,38 @@
+<div class="drink">
+  <div class="admin" fxLayout="column" *ngIf="authStore.isLoggedIn$|async">
+    <div class="seq-no_edit_trash" fxLayout fxLayoutAlign="space-between">
+      <div class="seqno">
+        <span>Seq. no:&nbsp;</span><span>{{drink.seqNo}}</span>
+      </div>
+      <div class="edit_trash" fxLayout fxLayoutGap="1rem">
+        <div class="edit" (click)="onEditDrink()">
+          <span class="fas fa-edit"></span>
+        </div>
+        <div class="trash" (click)="onDeleteDrink()">
+          <span class="fas fa-trash"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="customer" fxLayout fxLayoutAlign="space-between center center" fxLayoutGap="1rem">
+    <div class="name_vessel" fxLayout fxLayoutGap=".5rem">
+      <span class="name" *ngIf="(uiStore.language$|async)=== 'nl'">{{drink.nameDutch}}</span>
+      <span class="name" *ngIf="(uiStore.language$|async)=== 'en'">{{drink.nameEnglish}}</span>
+      <div *ngIf="drink.vessel === 'bottle'" class="vessel"><i class="fas fa-wine-bottle"></i></div>
+    </div>
+
+
+    <div class="price_order" fxLayout fxLayoutGap=".5rem" fxLayoutAlign="center center">
+      <div class="price">
+        {{drink.price|currency:"EUR"}}
+      </div>
+      <div
+        *ngIf="(uiStore.onLineOrdering$|async)"
+        class="order"
+        (click)="orderDrink(drink)">
+        <span class="fas fa-plus"></span>
+      </div>
+    </div>
+  </div>
+</div>

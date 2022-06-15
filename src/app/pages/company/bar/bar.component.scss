@@ -1,0 +1,17 @@
+.main-container {
+	height: 100%;
+	width: 100vw;
+	background-color: #ccc;
+	padding: 3rem;
+	.orders {
+		padding: 1rem;
+		background-color: white;
+		width: 100%;
+	}
+}
+.processed {
+	background-color: lightgreen;
+}
+.pending {
+	background-color: red;
+}

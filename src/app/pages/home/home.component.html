@@ -1,0 +1,75 @@
+<div id="top"></div>
+<section>
+  <div class="background-image">
+    <div class="banner">
+      <p class="banner-header">HET AMSTERDAMSCH LITTERAIR CAFE</p>
+      <div class="banner-content" fxLayout>
+        <!-- <img src="'./../../../assets/images/uithangbord3.svg" alt=""> -->
+        <div class="capital">D</div>
+        <div class="non-capital">E</div>
+        <div class="capital">E</div>
+        <div class="non-capital">NGELBEWAARDER</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-content" fxLayout="column" fxLayoutAlign="center center">
+
+    <div *ngIf="(uiStore.language$|async) == 'nl'" class="openingstijden" fxLayout="column"
+      fxLayoutAlign="center center">
+      <div class="tijden">
+        <div class="openingHours">
+          <div class="opening-hours-weekdays">
+            Het café is iedere dag open van
+            {{(openingHoursStore.openingHours$|async).openingHoursOpen}}&nbsp;tot&nbsp;
+            {{(openingHoursStore.openingHours$|async).openingHoursClose}}
+          </div>
+          <div class="opening-hours-weekend">
+            Op vrijdag en zaterdag van
+            {{(openingHoursStore.openingHours$|async).openingHoursWeekendOpen}}&nbsp;tot&nbsp;
+            {{(openingHoursStore.openingHours$|async).openingHoursWeekendClose}}
+          </div>
+        </div>
+      </div>
+      <div class="reserveren">
+        <p>Als u binnen wilt eten kunt u reserveren.</p>
+        <p>Het is niet mogelijk om op het terras te reserveren maar er is vast wel een plekje te
+          vinden. Hopelijk tot snel!
+        </p>
+      </div>
+
+    </div>
+
+    <div *ngIf="(uiStore.language$|async) == 'uk'" class="openingstijden" fxLayout="column"
+      fxLayoutAlign="center center">
+      <div class="tijden">
+        <div class="openingHours">
+          <div class="opening-hours-weekdays">
+            Our cafe is opened daily from
+            {{(openingHoursStore.openingHours$|async).openingHoursOpen}}&nbsp;until&nbsp;
+            {{(openingHoursStore.openingHours$|async).openingHoursClose}}
+          </div>
+          <div class="opening-hours-weekend">
+            On Fridays and Saturdays from
+            {{(openingHoursStore.openingHours$|async).openingHoursWeekendOpen}}&nbsp;until&nbsp;
+            {{(openingHoursStore.openingHours$|async).openingHoursWeekendClose}}
+          </div>
+        </div>
+      </div>
+      <div class="reserveren">For reservations please call 020 625 37 72</div>
+      <div class="reserveren">It's not possible to make
+        resevations for terrace seats. Hope to see you soon!
+      </div>
+    </div>
+
+    <div class="menu">
+      <div
+        class="menu-item"
+        *ngFor="let menuItem of menuItems"
+        (click)="onLinkSelected(menuItem.uk)">
+        {{(uiStore.language$|async) == 'en' ? menuItem.uk : menuItem.nl}}
+      </div>
+    </div>
+
+  </div>
+</section>

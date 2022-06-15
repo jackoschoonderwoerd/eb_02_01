@@ -1,0 +1,49 @@
+<div
+  class="main-container"
+  fxLayout fxLayoutAlign="center">
+  <div class="form-container">
+    <form
+      [formGroup]="form"
+      fxLayout="column">
+      <div class="header">
+        {{!editMode ? 'add new course to: ' + mealType : 'edit course: ' + course.courseNameEnglish}}
+      </div>
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          formControlName="courseNameDutch"
+          placeholder="course name dutch!!">
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          formControlName="courseNameEnglish"
+          placeholder="course name english">
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          type="number"
+          matInput
+          formControlName="seqNo"
+          placeholder="sequential number">
+      </mat-form-field>
+      <div class="buttons" fxLayout="column" fxLayoutGap="1rem">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="onSubmit()"
+          [disabled]="form.invalid">
+          {{!editMode ? 'add course to: ' + mealType: 'edit course in: ' + mealType}}
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          mat-dialog-close>
+          abort
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

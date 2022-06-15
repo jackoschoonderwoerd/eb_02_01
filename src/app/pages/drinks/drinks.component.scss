@@ -1,0 +1,61 @@
+@import "./../../shared/css/banner.scss";
+.background-image {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 0% 40%;
+	height: 70vh;
+	@media (max-width: 481px) {
+		background-image: url("./../../../assets/images/backgrounds/bar/engel-bar-2-1-481.jpg");
+	}
+	@media (min-width: 481px) and (max-width: 767px) {
+		background-image: url("./../../../assets/images/backgrounds/bar/engel-bar-2-1-767.jpg");
+	}
+	@media (min-width: 768px) {
+		background-image: url("./../../../assets/images/backgrounds/bar/engel-bar-2-1-1024.jpg");
+	}
+	@media (min-width: 1025px) {
+		background-image: url("./../../../assets/images/backgrounds/bar/engel-bar-2-1-1280.jpg");
+	}
+}
+.main-container {
+	.drinks-component {
+		border: 3px solid red;
+		background-color: pink;
+		padding: 1rem;
+		.drinks-component-content {
+			.header {
+				text-transform: uppercase;
+				color: red;
+			}
+			button {
+				border: 3px solid blue;
+			}
+		}
+	}
+	.child-components {
+		background-color: var(--blue);
+		width: 100%;
+		display: grid;
+		grid-column-gap: 0.5rem;
+		grid-row-gap: 0.5rem;
+		@media (min-width: 320px) and (max-width: 550px) {
+			grid-template-columns: 1fr;
+		}
+
+		@media (min-width: 551px) and (max-width: 767px) {
+			grid-template-columns: 1fr;
+		}
+
+		@media (min-width: 768px) and (max-width: 1024px) {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		@media (min-width: 1025px) and (max-width: 1399px) {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+
+		@media (min-width: 1400px) {
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+		}
+	}
+}

@@ -1,0 +1,34 @@
+<div class="category">
+  <div class="admin" fxLayout="column" *ngIf="authStore.isLoggedIn$|async">
+    <div class="header">category component</div>
+    <div class="id">{{category.id}}</div>
+    <div class="seq-no_edit_trash" fxLayout fxLayoutAlign="space-between">
+      <div class="seq-no"><span>seqNo:&nbsp;</span>{{category.seqNo}}</div>
+      <div class="edit_trash" fxLayout fxLayoutGap="1rem">
+        <div class="edit" (click)="onEditCategory()">
+          <span class="fas fa-edit"></span>
+        </div>
+        <div class="trash" *ngIf="authStore.isLoggedIn$|async" (click)="onDeleteCategory()">
+          <span class="fas fa-trash"></span>
+        </div>
+      </div>
+    </div>
+    <button class="open-add-drink" mat-raised-button (click)="onOpenAddDrink()">open add drink</button>
+  </div>
+</div>
+<div class="category-name" fxLayout fxLayoutAlign="center center">
+  {{category.name}}
+</div>
+
+
+<div
+  class="child-components"
+  *ngFor="let drink of drinks$|async">
+  <app-drink
+    [drink]="drink"
+    [categoryId]="category.id">
+  </app-drink>
+  <div class="hr-container" fxLayout fxLayoutAlign="center">
+    <hr>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="page-container" fxLayout="column" fxLayoutGap="1rem">
+  <div class="flags" fxLayout fxLayoutAlign="end" fxLayoutGap="2rem">
+    <div class="flag nl" (click)="onChangeLanguage('nl')">
+      <img src="./../../../../assets/images/flags/nl-flag.png" alt=""
+        [ngClass]="{'flag-selected': (uiStore.language$|async) === 'nl'}">
+    </div>
+    <div class="flag en" (click)="onChangeLanguage('en')">
+      <img src="./../../../../assets/images/flags/uk-flag.png" alt=""
+        [ngClass]="{'flag-selected': (uiStore.language$|async) === 'en'}">
+    </div>
+  </div>
+
+  <div *ngIf="(uiStore.language$|async) === 'nl'" class="content-nl">
+    <p>
+      Leuk dat je bij ons komt eten.
+    </p>
+    <p>
+      Let op: wij hebben BUITEN een aangepast menu.
+    </p>
+  </div>
+
+  <div *ngIf="(uiStore.language$|async) === 'en'" class="content-uk">
+    <p>
+      Dear customer,
+    </p>
+    <p>
+      Outside on the terrace we serve a custom menu.
+    </p>
+    <p>
+      By selecting an option you will be forewarded to the appropriate selection.
+    </p>
+
+  </div>
+
+  <div class="buttons" fxLayout fxLayoutAlign="space-between">
+    <button mat-raised-button (click)="setAvailability(true)">
+      <span *ngIf="(uiStore.language$|async) === 'nl'">binnen</span>
+      <span *ngIf="(uiStore.language$|async) === 'en'">inside</span>
+    </button>
+    <button mat-raised-button (click)="setAvailability(false)">
+      <span *ngIf="(uiStore.language$|async) === 'nl'">buiten</span>
+      <span *ngIf="(uiStore.language$|async) === 'en'">outside</span>
+    </button>
+  </div>
+
+</div>

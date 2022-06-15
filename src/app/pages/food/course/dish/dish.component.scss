@@ -1,0 +1,38 @@
+.dish-component-container {
+	background-color: var(--blue);
+	border-bottom: 1px solid rgba(204, 204, 204, 0.3);
+	// border-style: ;
+	border-width: thin;
+	.admin {
+		padding: 1rem;
+		.header {
+			text-transform: uppercase;
+			color: green;
+		}
+		.buttons {
+		}
+	}
+	.customer {
+		padding: 1rem;
+		background-color: var(--blue);
+		color: var(--bright-orange);
+		.name_description {
+			.name {
+				text-transform: uppercase;
+				margin-bottom: 0.2rem;
+			}
+			.description {
+				padding-left: 1rem;
+				font-size: 0.9rem;
+			}
+		}
+		.price {
+		}
+	}
+	hr {
+		width: 80%;
+		opacity: 0.3;
+		margin: 0;
+		padding: 0;
+	}
+}

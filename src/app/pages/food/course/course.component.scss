@@ -1,0 +1,39 @@
+.course-component-container {
+	// border: 4px solid blue;
+	background-color: aqua;
+	// border-bottom: 3px solid var(--orange);
+	.admin {
+		padding: 1rem;
+		.header {
+			text-transform: uppercase;
+			color: blue;
+		}
+		.seqNo_buttons {
+			.seq-no {
+			}
+			.buttons {
+				.edit {
+				}
+				.delete {
+				}
+			}
+		}
+		.add-dish {
+			button {
+				border: 5px solid green;
+			}
+		}
+	}
+	.customer {
+		padding: 1rem;
+		color: white;
+		background-color: var(--orange);
+		.name {
+			color: var(--blue);
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+	}
+	app-dish {
+	}
+}

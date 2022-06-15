@@ -1,0 +1,23 @@
+.page-container {
+	background-color: var(--blue);
+	color: var(--bright-orange);
+	padding: 1rem;
+	border: 3px solid var(--orange);
+	.flags {
+		.flag {
+			width: 3rem;
+			height: 2rem;
+			img {
+				width: 100%;
+			}
+		}
+		.flag-selected {
+			border: 3px solid var(--orange);
+		}
+	}
+	.buttons {
+		button {
+			background-color: var(--bright-orange);
+		}
+	}
+}

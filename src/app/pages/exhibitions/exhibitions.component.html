@@ -1,0 +1,50 @@
+<div class="page-container" id="top-page">
+
+  <div class="exhibitions" *ngFor="let exhibition of exhibitions$|async">
+    <div class="exhibition">
+      <div class="admin" *ngIf="authStore.isLoggedIn$|async">
+        <div class="edit_delete" fxLayout fxLayoutGap="1rem">
+          <div
+            [routerLink]="['/exhibitions/add-exhibition', {id: exhibition.id}]"
+            class="edit">
+            <span class="fas fa-edit"></span>
+          </div>
+          <div
+            (click)="onDelete(exhibition)"
+            class="delete">
+            <span class="fas fa-trash"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="top-page" class="public" fxLayout="column" fxLayoutGap="1rem">
+        <div class="images_dates" fxLayout fxLayoutGap=".5rem" fxLayoutAlign="start center center">
+
+          <div class="dates" fxLayout fxLayoutGap="1rem">
+            <div class="start">
+              {{exhibition.start|date}}
+            </div>
+            <span>-</span>
+            <div class="end">
+              {{exhibition.end|date}}
+            </div>
+          </div>
+        </div>
+        <div class="info_title" fxLayout fxLayoutGap="1rem" fxLayoutAlign="start center center">
+          <i class="fas fa-info-circle" (click)="onInfo(exhibition)"></i>
+          <div class="title">
+            {{exhibition.title}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="authStore.isLoggedIn$|async" class="button-container">
+    <button
+
+      mat-raised-button
+      (click)="onAddExhibition()"
+      color="warn">add exhibition</button>
+
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<div class="main-container">
+  <button
+    *ngIf="!(uiStore.onLineOrdering$|async)"
+    mat-raised-button
+    (click)="onLineOrderingOn()">
+    turn online ordering on
+  </button>
+  <button
+    *ngIf="uiStore.onLineOrdering$|async"
+    mat-raised-button
+    (click)="onLineOrderingOff()">
+    turn online ordering off
+  </button>
+  <button mat-raised-button
+    (click)="toggleSound()">
+    <span *ngIf="disableSound" class="fa fa-volume-off"></span>
+    <span *ngIf="!disableSound" class="fa fa-volume-up"></span>
+  </button>
+
+  {{uiStore.onLineOrdering$|async}}
+
+  <div class="order-table-container">
+    <mat-table #table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>TIME</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+
+          {{element.timestamp|date:'shortTime'}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="table">
+        <mat-header-cell *matHeaderCellDef>TABLE</mat-header-cell>
+        <mat-cell *matCellDef="let element" fxLayout fxLayoutGap=".5rem">
+          {{element.tableNumber}}
+          <button mat-raised-button (click)="onDetail(element)">
+            <span class="fas fa-search"></span>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="drinks">
+        <mat-header-cell *matHeaderCellDef>DRINKS</mat-header-cell>
+        <mat-cell *matCellDef="let element" fxLayout="column" fxLayoutAlign="start" (click)="onMatCell(element)">
+          <!-- {{element|json}} -->
+          <!-- {{element.orderedDrinks}} -->
+          <div
+            class="drink"
+            *ngFor="let orderedDrink of element.orderedDrinks"
+            fxLayout fxLayoutGap="1rem">
+            <div class="amount">{{orderedDrink.amount}}</div>
+            <div class="name">{{orderedDrink.drink.name}}</div>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="beers">
+        <mat-header-cell *matHeaderCellDef>BEERS</mat-header-cell>
+        <mat-cell *matCellDef="let element" fxLayout="column" fxLayoutAlign="start" (click)="onMatCell(element)">
+          <!-- {{element|json}} -->
+          <!-- {{element.orderedDrinks}} -->
+          <div
+            class="beer"
+            *ngFor="let orderedBeer of element.orderedBeers"
+            fxLayout fxLayoutGap=".5rem">
+            <div class="amount">{{orderedBeer.amount}}</div>
+            <div class="name">{{orderedBeer.beer.name}}</div>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="food">
+        <mat-header-cell *matHeaderCellDef>FOOD</mat-header-cell>
+        <mat-cell *matCellDef="let element" fxLayout="column" fxLayoutAlign="start" (click)="onMatCell(element)">
+
+          <div
+            class="food"
+            *ngFor="let orderedDish of element.orderedDishes"
+            fxLayout fxLayoutGap=".5rem">
+            <div class="amount">{{orderedDish.amount}}</div>
+            <div class="name">{{orderedDish.dish.name}}</div>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef>DELETE</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button (click)="onDeleteOrder(element.id, element.timestamp)">delete</button>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="processed">
+        <mat-header-cell *matHeaderCellDef>PROCESSED</mat-header-cell>
+        <mat-cell
+          *matCellDef="let element"
+          [ngClass]="{processed: element.processed, 'pending': !element.processed}">
+          {{element.processed}}
+          <button
+            (click)="onProcessed(element.id, element.processed)">{{element.processed ? 'processed' : 'pending'}}</button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<div
+  class="page-container"
+  fxLayout
+  fxLayoutAlign="center">
+  <form
+    [formGroup]="form"
+    fxLayout="column">
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        formControlName="seqNo"
+        placeholder="sequential number">
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="name"
+        placeholder="name">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        rows="10"
+        matInput
+        type="text"
+        formControlName="description"
+        placeholder="description">
+        </textarea>
+    </mat-form-field>
+    <mat-radio-group
+      formControlName="vessel" fxLayout fxLayoutGap="2rem">
+      <mat-radio-button
+        class="example-radio-button"
+        *ngFor="let vessel of vessels"
+        [value]="vessel">
+        {{vessel}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        formControlName="clVolume"
+        placeholder="volume in cl">
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        formControlName="alcoholPercentage"
+        placeholder="alcohol percentage">
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        formControlName="price"
+        placeholder="price">
+    </mat-form-field>
+    <div
+      class="buttons"
+      fxLayout="column"
+      fxLayoutGap="1rem">
+      <button
+        mat-raised-button
+        [mat-dialog-close]="form.value">
+        {{editMode ? 'save edits' : 'add beer'}}
+      </button>
+      <button
+        mat-raised-button
+        mat-dialog-close>
+        abort
+      </button>
+    </div>
+  </form>
+
+</div>

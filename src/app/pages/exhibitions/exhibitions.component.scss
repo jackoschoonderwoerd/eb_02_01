@@ -1,0 +1,58 @@
+.page-container {
+	background-color: var(--blue);
+
+	width: 100%;
+	display: grid;
+	column-gap: 1rem;
+	row-gap: 1rem;
+
+	background-color: var(--blue);
+	padding: 1rem;
+
+	@media (min-width: 800px) and (max-width: 1199px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (min-width: 1200px) and (max-width: 1599px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	@media (min-width: 1600px) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+	.button-container {
+	}
+	.exhibitions {
+		* {
+			color: var(--bright-orange);
+		}
+		.exhibition {
+			border: 3px solid var(--orange);
+			border-radius: 3px;
+			padding: 1rem;
+			.admin {
+				border: 1px solid lightblue;
+				padding: 0.3rem;
+			}
+			.public {
+				.images_dates {
+					.fa-images {
+						font-size: 2rem;
+					}
+					.dates {
+						.start {
+						}
+						.end {
+							// display: inline;
+						}
+					}
+				}
+				.info_title {
+					.title {
+					}
+					.fa-info-circle {
+						font-size: 2rem;
+					}
+				}
+			}
+		}
+	}
+}

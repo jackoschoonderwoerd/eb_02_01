@@ -1,0 +1,70 @@
+<div class="page-container" fxLayout fxLayoutGap="1rem">
+  <form [formGroup]="form" fxLayout="column" fxLayoutGap="1rem">
+    <div class="header">add exhibiton</div>
+    <mat-form-field appearance="fill">
+      <input
+        type="text"
+        matInput
+        formControlName="title">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate formControlName="start" placeholder="Start date">
+        <input matEndDate formControlName="end" placeholder="End date">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+
+    <button color="warn" mat-raised-button (click)="onAddImage()">add image</button>
+
+    <div class="artist-names" formArrayName="artistNames">
+      <!-- <h4>add artist names</h4> -->
+      <button color="warn" mat-raised-button type="button"
+        (click)="onAddArtistName()">ADD ARTIST
+        NAME</button>
+      <div *ngFor="let artistNamesControl of form.get('artistNames')?.controls; let i = index">
+        <mat-form-field>
+          <mat-label>ARTIST NAME</mat-label>
+          <input type="text" matInput [formControlName]="i">
+        </mat-form-field>
+        <!-- <button color="warn"  mat-raised-button (click)="onCancel(i)">Cancel</button> -->
+      </div>
+    </div>
+    <mat-form-field appearance="fill">
+      <textarea
+        rows="15"
+        type="text"
+        matInput
+        formControlName="description">
+	</textarea>
+    </mat-form-field>
+    <div class="buttons" fxLayout="column" fxLayoutGap="1rem">
+      <button color="warn"
+        mat-raised-button
+        (click)="onAddExhibition()">
+        {{!editMode ? 'add exhibition' : 'update exhibition'}}
+
+      </button>
+      <button color="warn" mat-raised-button (click)="onCancel()">cancel</button>
+    </div>
+  </form>
+  <div class="previews" *ngIf="exhibition.images.length > 0">
+    <div class="image-data" *ngFor="let image of exhibition.images">
+      <img class="image" [src]="image.filePath" alt="">
+      <div class="seq-trash" fxLayout fxLayoutAlign="space-between">
+        <div class="seqNo"><span>sequential number:&nbsp;</span>{{image.seqNo}}</div>
+        <div class="edit_trash" fxLayout fxLayoutGap="1rem">
+          <div class="edit" (click)="onEditImage(image)"><span class="fas fa-edit"></span></div>
+          <div class="trash" (click)="onDeleteImage(image)"><span class="fas fa-trash"></span></div>
+        </div>
+      </div>
+      <div *ngIf="image.title" class="title"><span>title:&nbsp;</span>{{image.title}}</div>
+      <div *ngIf="image.artistName" class="artist-name"><span>artist name:&nbsp;</span>{{image.artistName}}</div>
+      <div *ngIf="image.copyrightOwner" class="copyright-owner"><span>copyright
+          owner:&nbsp;</span>{{image.copyrightOwner}}</div>
+      <div *ngIf="image.price" class="price"><span>price:&nbsp;</span>{{image.price|currency:"EUR"}}</div>
+    </div>
+  </div>
+</div>

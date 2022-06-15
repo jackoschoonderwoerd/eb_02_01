@@ -1,0 +1,50 @@
+<div
+  fxLayout="column"
+  class="dish-component-container">
+  <div class="admin" *ngIf="authStore.isLoggedIn$|async">
+    <div class="header">DISH COMPONENT</div>
+    <div class="dish-id"><span>Dish id:&nbsp;</span><span>{{dish.dishId}}</span></div>
+    <div class="seq-no_buttons" fxLayout fxLayoutAlign="space-between">
+      <div class="seq-no"><span>Seq. No:</span>&nbsp;
+        {{dish.seqNo}}
+      </div>
+      <div class="buttons"
+        fxLayoutGap="1rem">
+        <span (click)="onOpenEditDishDialog()" class="fas fa-edit"></span>
+
+        <span (click)="onDeleteDish(dish)" class="fas fa-trash"></span>
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="dish.availableOutside || (insideStore.inside$|async)" class="customer" fxLayout
+    fxLayoutAlign="space-between" fxLayoutGap="1rem">
+    <!-- <div class="availableOutside" style="background-color: white; color: black;">
+      <div class="available">store: {{insideStore.inside$|async}}</div>
+      <div class="dish-availability">dish: {{dish.availableOutside}}</div>
+    </div> -->
+    <div class="name_description">
+      <div class="name">
+        <div class="name-dutch name" *ngIf="(uiStore.language$|async) === 'nl'">{{dish.nameDutch}}</div>
+        <div class="name-english name" *ngIf="(uiStore.language$|async) === 'en'">{{dish.nameEnglish}}</div>
+      </div>
+      <div class="description" *ngIf="dish.descriptionEnglish || dish.descriptionDutch">
+        <div class="description-dutch" *ngIf="(uiStore.language$|async) === 'nl'">{{dish.descriptionDutch}}</div>
+        <div class="description-dutch" *ngIf="(uiStore.language$|async) === 'en'">{{dish.descriptionEnglish}}</div>
+      </div>
+    </div>
+    <div
+      class="price_add-to-order"
+      fxLayout="space-between"
+      fxLayoutGap="1rem">
+      <div class="price"> {{dish.price|currency:"EUR"}}</div>
+      <div *ngIf="(uiStore.onLineOrdering$|async)" class="add-to-order" (click)="onAddDishToOrder()">
+        <span class="fas fa-plus"></span>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="hr" fxLayout fxLayoutAlign="center">
+    <hr>
+  </div> -->
+</div>

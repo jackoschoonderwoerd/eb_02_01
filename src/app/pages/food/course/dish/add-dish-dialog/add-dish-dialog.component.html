@@ -1,0 +1,73 @@
+<div
+  class="main-container"
+  fxLayout fxLayoutAlign="center">
+  <div class="form-container">
+    <form
+      [formGroup]="form"
+      fxLayout="column">
+      <div class="header">
+        {{!editMode ? 'add dish to: ' + course.mealType: 'edit dish: ' + dish.nameEnglish}}
+      </div>
+      <mat-form-field>
+        <input
+          type="number"
+          matInput
+          formControlName="seqNo"
+          placeholder="sequential number">
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          formControlName="nameDutch"
+          placeholder="nameDutch">
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          formControlName="descriptionDutch"
+          placeholder="descriptionDutch">
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          formControlName="nameEnglish"
+          placeholder="nameEnglish">
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          formControlName="descriptionEnglish"
+          placeholder="descriptionEnglish">
+      </mat-form-field>
+      <mat-checkbox formControlName="availableOutside">
+        Available Outside
+      </mat-checkbox>
+      <mat-form-field>
+        <input
+          type="number"
+          matInput
+          formControlName="price"
+          placeholder="price">
+      </mat-form-field>
+      <div class="buttons" fxLayout="column" fxLayoutGap="1rem">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="form.invalid"
+          (click)="onSubmit()">
+          {{!editMode ? 'add dish': 'edit dish'}}
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          mat-dialog-close>
+          abort
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

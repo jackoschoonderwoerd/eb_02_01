@@ -1,0 +1,47 @@
+<section id="top-page">
+  <div class="background-image">
+    <div class="banner">
+      <p *ngIf="(uiStore.language$|async) === 'nl'" class="banner-header">KEUKEN & DRANKEN</p>
+      <p *ngIf="(uiStore.language$|async) === 'en'" class="banner-header">
+        KITCHEN & DRINKS
+      </p>
+      <p *ngIf="(uiStore.language$|async) === 'nl'" class="banner-course-name">Dranken</p>
+      <p *ngIf="(uiStore.language$|async) === 'en'" class="banner-course-name">Drinks</p>
+      <p *ngIf="(uiStore.language$|async) === 'nl'" class="banner-text-content">
+        De keuken is 7 dagen per week geopend.<br />
+        Lunch: {{ (openingHours$|async).lunch }}<br />
+        Diner: {{ (openingHours$|async).dinner }}<br />
+        Snacks: {{(openingHours$|async).snacks }}
+      </p>
+      <p *ngIf="(uiStore.language$|async) === 'en'" class="banner-text-content">
+        Our kitchen is opened 7 days a week.<br />
+        Lunch: {{ (openingHours$|async).lunch }}<br />
+        Diner: {{ (openingHours$|async).dinner }}<br />
+        Snacks: {{(openingHours$|async).snacks }}
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="main-container" fxLayout="column" fxLayoutGap=1rem>
+  <div *ngIf="isLoggedIn$|async" class="drinks-component">
+    <div class="drinks-component-content">
+      <div class="header">drinks component</div>
+      <div class="opening-hours" fxLayout>
+        <div class="open">{{(openingHours$|async).openingHoursOpen}}</div>
+        <div class="">-</div>
+        <div class="close">{{(openingHours$|async).openingHoursClose}}</div>
+
+      </div>
+      <button mat-raised-button (click)="onShowAddCategory()">show add category</button>
+    </div>
+  </div>
+  <div
+    class="child-components">
+    <app-drink-category
+      *ngFor="let category of drinkCategories$|async"
+      [category]="category"
+      [id]="category.name">
+    </app-drink-category>
+  </div>
+</div>

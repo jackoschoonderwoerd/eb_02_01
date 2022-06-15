@@ -1,0 +1,101 @@
+<div class="section">
+  <div class="top-footer">
+
+    <!-- CONTACT -->
+
+    <div class="contact">
+      <div class="contact-title">
+        Contact
+      </div>
+      <div class="address-phone">
+        Café de Engelbewaarder<br>
+        Kloveniersburgwal 59 HS<br>
+        1011 JZ Amsterdam<br>
+        020.625.37.72 <br>
+      </div>
+      <div class="email">cafedeengelbewaarder@gmail.com</div>
+
+      <div class="social-media">
+        <a
+          class="instagram"
+          href="https://www.instagram.com/cafedeengelbewaarder/"
+          target="_blank">
+          <img src="./../../../assets/images/social-media/instagram_icon_138461.png" alt="Istagram">
+        </a>
+        <span>
+          <a
+            class="facebook"
+            href="https://www.facebook.com/cafedeengelbewaarder"
+            target="_blank">
+            <img src="./../../../assets//images/social-media//1200px-Facebook_icon.svg.png" alt="Facebook">
+          </a>
+        </span>
+      </div>
+    </div>
+
+    <!-- OPENING HOURS -->
+
+    <div class="opening-hours">
+      <div class="opening-hours-title">
+
+        <span *ngIf="(uiStore.language$|async) === 'nl'">Openingstijden</span>
+        <span *ngIf="(uiStore.language$|async) === 'en'">Opening Hours</span>
+      </div>
+      <div class="opening-hours-content">
+        <div>
+          <span *ngIf="(uiStore.language$|async) === 'nl'">Wij zijn dagelijks geopend van</span>
+          <span *ngIf="(uiStore.language$|async) === 'en'">We are opened daily from</span>
+          {{(openingHoursStore.openingHours$|async).openingHoursOpen}}
+          <span *ngIf="(uiStore.language$|async) === 'nl'">tot</span>
+          <span *ngIf="(uiStore.language$|async) === 'en'">until</span>
+          &nbsp;{{(openingHoursStore.openingHours$|async).openingHoursClose}}
+        </div>
+        <div>
+          <span *ngIf="(uiStore.language$|async) === 'nl'">Op vrijdag en zaterdag van</span>
+          <span *ngIf="(uiStore.language$|async) === 'en'">On Fridays and Saturdays from</span>
+
+          {{(openingHoursStore.openingHours$|async).openingHoursWeekendOpen}}&nbsp;
+          <span *ngIf="(uiStore.language$|async) === 'nl'">tot</span>
+          <span *ngIf="(uiStore.language$|async) === 'en'">until</span>
+          &nbsp;{{(openingHoursStore.openingHours$|async).openingHoursWeekendClose}}
+        </div>
+        <div>Lunch: {{(openingHoursStore.openingHours$|async).lunch}}</div>
+        <div>Snacks: {{(openingHoursStore.openingHours$|async).snacks}}</div>
+        <span *ngIf="(uiStore.language$|async) === 'nl'">Diner:
+          {{(openingHoursStore.openingHours$|async).dinner}}</span>
+        <span *ngIf="(uiStore.language$|async) === 'en'">Dinner:
+          {{(openingHoursStore.openingHours$|async).dinner}}</span>
+      </div>
+    </div>
+
+    <!-- JAZZENGEL-->
+
+    <div class="jazzengel">
+      <div class="jazzengel-title">
+        <span *ngIf="(uiStore.language$|async) === 'nl'">Jazz op zondag</span>
+        <span *ngIf="(uiStore.language$|async) === 'en'">Jazz on Sundays</span>
+      </div>
+      <p *ngIf="(uiStore.language$|async) === 'nl'" class="footer-section-content">
+        Jazzengel jamt elke zondag van
+        <span style="white-space:nowrap">16:30&nbsp;tot&nbsp;19:00</span>.<br>
+        Ga naar de website van
+        <a href="http://www.jazzengel.nl" rel="noreferrer" class="jazz-engel-link" target="_blank">JAZZENGEL</a>
+        voor meer informatie en het programma.
+      </p>
+      <p *ngIf="(uiStore.language$|async) === 'en'" class="footer-section-content">
+        Jazzengel jams every Sunday from
+        <span style="white-space:nowrap">16:30&nbsp;tot&nbsp;19:00</span>.<br>
+        For more information about the program visit:
+        <a href="http://www.jazzengel.nl" rel="noreferrer" class="jazz-engel-link" target="_blank">JAZZENGEL</a>
+
+      </p>
+    </div>
+  </div>
+
+
+  <div class="bottom-footer" fxLayout fxLayoutAlign="center">
+
+    &copy; De Engelbewaarder 2020.
+
+  </div>
+</div>

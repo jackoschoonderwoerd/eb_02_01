@@ -1,0 +1,51 @@
+
+<div
+	class="main-container"
+	fxLayout
+	fxLayoutAlign="center">
+	<div class="form-container">
+		<form
+			[formGroup]="form"
+			fxLayout="column">
+			<mat-form-field>
+				<input
+					type="text"
+					matInput
+					formControlName="id"
+					placeholder="id"
+					readonly="true">
+			</mat-form-field>
+			<mat-form-field>
+				<input
+					type="text"
+					matInput
+					formControlName="name"
+					placeholder="name">
+			</mat-form-field>
+			<mat-form-field>
+				<input
+					type="number"
+					matInput
+					formControlName="seqNo"
+					placeholder="sequential number">
+			</mat-form-field>
+			<div
+				class="buttons"
+				fxLayout="column"
+				fxLayoutGap="1rem">
+				<button 
+					color="primary"
+					mat-raised-button
+					[mat-dialog-close]="form.value">
+					{{editMode ? 'update category' : 'add category'}}
+				</button>
+				<button
+					color="primary"
+					mat-raised-button
+					mat-dialog-close>
+					abort
+				</button>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,41 @@
+<div class="page-container" fxLayout fxLayoutAlign="center" #pageContainer>
+  <div class=" page-content" fxLayout="column" fxLayoutGap="1rem">
+    <div class="dates_images" fxLayout fxLayoutAlign="space-between">
+      <div class="dates" fxLayout fxLayoutGap="1rem">
+        <div class="start">
+          {{exhibition.start|date}}
+        </div>
+        <span>-</span>
+        <div class="end">
+          {{exhibition.end|date}}
+        </div>
+      </div>
+      <div class="images-icon">
+      </div>
+    </div>
+    <div class="showcase_title" fxLayout fxLayoutAlign="space-between center center" fxLayoutGap="1rem">
+
+      <div class="title">
+        {{exhibition.title}}
+      </div>
+      <button mat-raised-button>
+        <i class="far fa-images" (click)="onShowcase()"></i>
+      </button>
+    </div>
+    <div fxLayout fxLayoutAlign="end" class="artist-names" *ngFor="let artistName of exhibition.artistNames">
+      <div class="artist-name">{{artistName}}</div>
+    </div>
+    <div class="description" [innerHTML]="exhibition.description">
+      <!-- {{exhibition.description}} -->
+    </div>
+    <div class="icons" fxLayout fxLayoutAlign="space-between">
+      <!-- <div class="images-icon">
+        <i class="far fa-images" (click)="onShowcase()"></i>
+      </div> -->
+      <div class="window-close" mat-dialog-close fxLayout fxLayoutAlign="end">
+        <i class="fas fa-window-close" mat-dialog-close></i>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,114 @@
+.main-container {
+	height: 100%;
+	background-color: #ccc;
+	.content {
+		width: 100%;
+		max-width: 400px;
+
+		// padding: 1rem;
+		// border: 1px solid green;
+		.table-number-container {
+			background-color: lightblue;
+			padding: 1rem;
+			.table-number {
+			}
+			.enter-table-number {
+				.header {
+				}
+				mat-form-field {
+					input {
+					}
+				}
+				button {
+				}
+			}
+		}
+		.selected-product {
+			padding: 1rem;
+			background-color: lightgreen;
+			.header {
+			}
+			.name-price {
+				.name {
+					text-transform: uppercase;
+				}
+				.product-price {
+				}
+			}
+
+			.buttons {
+			}
+		}
+		.selected-drinks {
+			padding: 1rem;
+			background-color: pink;
+			.header {
+				text-transform: uppercase;
+				font-size: 1.3rem;
+			}
+			.ordered-drink {
+				// border: 1px solid green;
+				.name {
+					justify-content: center;
+					align-items: center;
+					display: flex;
+					// border: 1px solid red;
+				}
+				.amount_price {
+					.amount {
+						justify-content: center;
+						align-items: center;
+						display: flex;
+					}
+					.price {
+						justify-content: center;
+						align-items: center;
+						display: flex;
+					}
+					.plus {
+						justify-content: center;
+						align-items: center;
+						display: flex;
+						width: 2.5rem;
+						height: 2.5rem;
+						// padding:.3rem;
+						border: 1px solid black;
+						border-radius: 3px;
+					}
+					.minus_trash {
+						.fa-trash {
+							color: red;
+							justify-content: center;
+							align-items: center;
+							display: flex;
+							width: 2.5rem;
+							height: 2.5rem;
+							// padding:.3rem;
+							border: 1px solid black;
+							border-radius: 3px;
+						}
+						.fa-minus {
+							justify-content: center;
+							align-items: center;
+							display: flex;
+							width: 2.5rem;
+							height: 2.5rem;
+							// padding:.3rem;
+							border: 1px solid black;
+							border-radius: 3px;
+						}
+					}
+				}
+			}
+			.total-price {
+				// border: 1px solid red;
+			}
+			.hidden-plus {
+				visibility: hidden;
+			}
+		}
+		.buttons {
+			border: 1px solid red;
+		}
+	}
+}

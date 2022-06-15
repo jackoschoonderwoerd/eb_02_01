@@ -1,0 +1,29 @@
+<div 
+	class="page-container"
+	fxLayout
+	fxLayoutAlign="center">
+	<form 
+		[formGroup]="form"
+		fxLayout="column"
+		fxLayoutGap="1rem">
+		<mat-form-field>
+			<input
+				type="text"
+				matInput
+				formControlName="email"
+				placeholder="email">
+		</mat-form-field>
+		<mat-form-field>
+			<input
+			type="text"
+			matInput
+			formControlName="password"
+			placeholder="password">
+		</mat-form-field>
+		<button
+			mat-raised-button
+			(click)="onSignUp()">
+			sign up
+		</button>
+	</form>
+</div>

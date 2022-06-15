@@ -1,0 +1,87 @@
+:host {
+	display: block;
+}
+
+.page-container {
+	// border: 3px solid red;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	.buttons-container {
+		z-index: 100;
+		width: 100vw;
+		height: 100%;
+		// border: 3px solid red;
+		.page-sections {
+			width: 100%;
+			height: 100%;
+			.previous {
+				width: calc(100% / 3);
+				i {
+					font-size: 3rem;
+				}
+			}
+			.close {
+				width: calc(100% / 3);
+				i {
+					font-size: 3rem;
+				}
+			}
+			.full-width {
+				width: 100%;
+				// background-color: red;
+			}
+			.next {
+				width: calc(100% / 3);
+				i {
+					font-size: 3rem;
+				}
+			}
+		}
+	}
+}
+
+.animated {
+	-webkit-animation-duration: 3s;
+	animation-duration: 3s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeOut {
+	0% {
+		-webkit-opacity: 1;
+		// -webkit-background-color: white;
+		// -webkit-color: black;
+	}
+	// 10% {
+	// }
+	// 50% {
+	// 	-webkit-opacity: 1;
+	// }
+	100% {
+		-webkit-opacity: 0;
+	}
+}
+
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+		// background-color: white;
+		// color: black;
+	}
+	// 10% {
+	// }
+	// 50% {
+	// 	opacity: 1;
+	// }
+	100% {
+		opacity: 0;
+	}
+}
+
+.fadeOut {
+	-webkit-animation-name: fadeOut;
+	animation-name: fadeOut;
+}

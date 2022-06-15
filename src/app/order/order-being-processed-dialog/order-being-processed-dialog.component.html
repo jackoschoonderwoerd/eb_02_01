@@ -1,0 +1,16 @@
+<div
+  class="main-container"
+  fxLayout="column"
+  fxLayoutGap="2rem">
+  <div class="message">
+    {{message}}
+  </div>
+  <div
+    mat-dialog-close
+    class="window-close"
+    fxLayout
+    fxLayoutAlign="center"
+    (click)="onWindowClose()">
+    <button mat-raised-button>OK</button>
+  </div>
+</div>

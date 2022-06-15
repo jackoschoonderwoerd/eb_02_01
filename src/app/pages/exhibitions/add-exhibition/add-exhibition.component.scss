@@ -1,0 +1,40 @@
+.page-container {
+	padding: 1rem;
+	form {
+		.artist-names {
+			button {
+				width: 100%;
+			}
+		}
+	}
+	.previews {
+		display: grid;
+		@media (min-width: 320px) and (max-width: 550px) {
+			grid-template-columns: 1fr;
+		}
+
+		@media (min-width: 551px) and (max-width: 767px) {
+			grid-template-columns: 1fr;
+		}
+
+		@media (min-width: 768px) and (max-width: 1024px) {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		@media (min-width: 1025px) and (max-width: 1399px) {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+
+		@media (min-width: 1400px) {
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		}
+		.image-data {
+			width: 16rem;
+			border: 2px solid #ccc;
+			padding: 1rem;
+			.image {
+				width: 100%;
+			}
+		}
+	}
+}
