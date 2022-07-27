@@ -50,7 +50,7 @@
             *ngFor="let orderedDrink of element.orderedDrinks"
             fxLayout fxLayoutGap="1rem">
             <div class="amount">{{orderedDrink.amount}}</div>
-            <div class="name">{{orderedDrink.drink.name}}</div>
+            <div class="name">{{orderedDrink.drink.nameEnglish}}</div>
           </div>
         </mat-cell>
       </ng-container>
@@ -79,7 +79,7 @@
             *ngFor="let orderedDish of element.orderedDishes"
             fxLayout fxLayoutGap=".5rem">
             <div class="amount">{{orderedDish.amount}}</div>
-            <div class="name">{{orderedDish.dish.name}}</div>
+            <div class="name">{{orderedDish.dish.nameEnglish}}</div>
           </div>
         </mat-cell>
       </ng-container>

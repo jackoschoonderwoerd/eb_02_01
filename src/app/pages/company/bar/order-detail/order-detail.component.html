@@ -8,18 +8,40 @@
     <span>Ordered at:&nbsp;</span>{{order.timestamp|date:'shortTime'}}
   </div>
   <hr>
+  <!-- {{order|json}} -->
   <div class="drinks">
-    <div class="drink" *ngFor="let orderedDrink of order.orderedDrinks" fxLayout fxLayoutGap="1rem">
-      <div class="amount">{{orderedDrink.amount}}</div>
-      <div class="name">{{orderedDrink.drink.name}}</div>
-      <div class="name">{{orderedDrink.drink.price|currency:'EUR'}}</div>
+    <div class="header">drinks</div>
+    <div class="drink" *ngFor="let orderedDrink of order.orderedDrinks" fxLayout fxLayoutGap="1rem"
+      fxLayoutAlign="space-between">
+      <div class="amount-name" fxLayout fxLayoutGap="1rem">
+        <div class="amount">{{orderedDrink.amount}}</div>
+        <div class="name">{{orderedDrink.drink.nameEnglish}}</div>
+      </div>
+      <div class="price">{{orderedDrink.drink.price|currency:'EUR'}}</div>
     </div>
   </div>
+  <hr>
   <div class="beers">
-    <div class="beer" *ngFor="let orderedBeer of order.orderedBeers" fxLayout fxLayoutGap="1rem">
-      <div class="amount">{{orderedBeer.amount}}</div>
-      <div class="name">{{orderedBeer.beer.name}}</div>
-      <div class="name">{{orderedBeer.beer.price|currency:'EUR'}}</div>
+    <div class="header">beers</div>
+    <div class="beer" *ngFor="let orderedBeer of order.orderedBeers" fxLayout fxLayoutGap="1rem"
+      fxLayoutAlign="spaece-between">
+      <div class="amount-name" fxLayout fxLayoutGap="1rem">
+        <div class="amount">{{orderedBeer.amount}}</div>
+        <div class="name">{{orderedBeer.beer.name}}</div>
+      </div>
+      <div class="price">{{orderedBeer.beer.price|currency:'EUR'}}</div>
+    </div>
+  </div>
+  <hr>
+  <div class="dishes">
+    <div class="header">food</div>
+    <div class="dish" *ngFor="let orderedDish of order.orderedDishes" fxLayout fxLayoutGap="1rem"
+      fxLayoutAlign="space-between">
+      <div class="amount_price" fxLayout fxLayoutGap="1rem">
+        <div class="amount">{{orderedDish.amount}}</div>
+        <div class="name">{{orderedDish.dish.nameEnglish}}</div>
+      </div>
+      <div class="price">{{orderedDish.dish.price|currency:"EUR"}}</div>
     </div>
   </div>
   <hr>

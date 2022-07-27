@@ -31,8 +31,14 @@ export class ExhibitionsComponent implements OnInit {
 		this.exhibitions$ = this.exhibitionsService.getExhibitions();
 		const targetElement = document.getElementById('top-page');
 		if (targetElement) {
-			console.log(targetElement)
-			targetElement.scrollIntoView({ behavior: 'smooth' });
+			// console.log(targetElement)
+			// targetElement.scrollIntoView({
+			// 	behavior: 'smooth',
+			// });
+			// window.scrollTo({
+			// 	top: 1000,
+			// 	behavior: 'smooth'
+			// })
 		}
 	}
 	onInfo(exhibition: Exhibition) {

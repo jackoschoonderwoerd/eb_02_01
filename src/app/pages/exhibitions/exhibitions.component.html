@@ -1,5 +1,5 @@
+<div class="filler" id="filler"></div>
 <div class="page-container" id="top-page">
-
   <div class="exhibitions" *ngFor="let exhibition of exhibitions$|async">
     <div class="exhibition">
       <div class="admin" *ngIf="authStore.isLoggedIn$|async">
@@ -17,7 +17,7 @@
         </div>
       </div>
 
-      <div id="top-page" class="public" fxLayout="column" fxLayoutGap="1rem">
+      <div id="top-page" class="public" fxLayout="column" fxLayoutGap="1rem" (click)="onInfo(exhibition)">
         <div class="images_dates" fxLayout fxLayoutGap=".5rem" fxLayoutAlign="start center center">
 
           <div class="dates" fxLayout fxLayoutGap="1rem">
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="info_title" fxLayout fxLayoutGap="1rem" fxLayoutAlign="start center center">
-          <i class="fas fa-info-circle" (click)="onInfo(exhibition)"></i>
+          <i class="fas fa-info-circle"></i>
           <div class="title">
             {{exhibition.title}}
           </div>

@@ -66,6 +66,10 @@ export class AddDishDialogComponent implements OnInit {
 		if (!this.editMode) {
 			const newDish: Dish = {
 				...this.form.value,
+				nameDutch: this.form.value.nameDutch.toLowerCase(),
+				nameEnglish: this.form.value.nameEnglish.toLowerCase(),
+				descriptionDutch: this.form.value.descriptionDutch.toLowerCase(),
+				descriptionEnglish: this.form.value.descriptionEnglish.toLowerCase(),
 				courseId: this.course.courseId,
 				mealType: this.course.mealType
 			}
@@ -82,6 +86,10 @@ export class AddDishDialogComponent implements OnInit {
 		} else {
 			const editedDish: Dish = {
 				...this.form.value,
+				nameDutch: this.form.value.nameDutch.toLowerCase(),
+				nameEnglish: this.form.value.nameEnglish.toLowerCase(),
+				descriptionDutch: this.form.value.descriptionDutch ? this.form.value.descriptionDutch.toLowerCase() : null,
+				descriptionEnglish: this.form.value.descriptionEnglish ? this.form.value.descriptionEnglish.toLowerCase() : null,
 				dishId: this.dish.dishId,
 				courseId: this.dish.courseId,
 				mealType: this.dish.mealType
