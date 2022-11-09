@@ -1,62 +1,74 @@
 <app-loading *ngIf="loadingService.loading$"></app-loading>
 
-<div id="top-page" class="page-container" fxLayout="column">
+<div id="top-page"
+    class="page-container"
+    fxLayout="column">
 
-  <section>
-    <div class="background-image">
-      <div class="banner">
-        <p *ngIf="(uiStore.language$|async) === 'nl'" class="banner-header">KEUKEN & DRANKEN</p>
-        <p *ngIf="(uiStore.language$|async) === 'en'" class="banner-header">
-          KITCHEN & DRINKS
-        </p>
-        <p *ngIf="(uiStore.language$|async) === 'nl'" class="banner-course-name">Dranken</p>
-        <p *ngIf="(uiStore.language$|async) === 'en'" class="banner-course-name">Drinks</p>
-        <p *ngIf="(uiStore.language$|async) === 'nl'" class="banner-text-content">
-          De keuken is 7 dagen per week geopend.<br />
-          Lunch: {{ (openingHoursStore.openingHours$|async).lunch }}<br />
-          Diner: {{ (openingHoursStore.openingHours$|async).dinner }}<br />
-          Snacks: {{(openingHoursStore.openingHours$|async).snacks }}
-        </p>
-        <p *ngIf="(uiStore.language$|async) === 'en'" class="banner-text-content">
-          Our kitchen is opened 7 days a week.<br />
-          Lunch: {{ (openingHoursStore.openingHours$|async).lunch }}<br />
-          Diner: {{ (openingHoursStore.openingHours$|async).dinner }}<br />
-          Snacks: {{(openingHoursStore.openingHours$|async).snacks }}
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <div class="food-component">
-    <div
-      class="food-component-content"
-      fxLayout>
-      <div class="admin" *ngIf="authStore.isLoggedIn$|async">
-        <div style="color: red;">FOOD COMPONENT</div>
-        <button
-          class="show-add-course-button"
-          *ngIf="!(addingCourse$|async)"
-          mat-raised-button
-          (click)="onShowAddCourseDialog()">
-          show add course dialog
-        </button>
-      </div>
-
-      <div class="customer" fxLayout="column">
-        <div class="meal-type_opening-hours" fxLayout>
-          <span class="meal-type">{{mealType}}</span>&nbsp;
-          <div class="opening-hours" *ngIf="mealType == 'snacks'">
-            {{(openingHoursStore.openingHours$|async).snacks}}
-          </div>
-          <div class="opening-hours" *ngIf="mealType == 'lunch'">
-            {{(openingHoursStore.openingHours$|async).lunch}}
-          </div>
-          <div class="opening-hours" *ngIf="mealType == 'dinner'">
-            {{(openingHoursStore.openingHours$|async).dinner}}
-          </div>
-
+    <section>
+        <div class="background-image">
+            <div class="banner">
+                <p *ngIf="(uiStore.language$|async) === 'nl'"
+                    class="banner-header">KEUKEN & DRANKEN</p>
+                <p *ngIf="(uiStore.language$|async) === 'en'"
+                    class="banner-header">
+                    KITCHEN & DRINKS
+                </p>
+                <p *ngIf="(uiStore.language$|async) === 'nl'"
+                    class="banner-course-name">Dranken</p>
+                <p *ngIf="(uiStore.language$|async) === 'en'"
+                    class="banner-course-name">Drinks</p>
+                <p *ngIf="(uiStore.language$|async) === 'nl'"
+                    class="banner-text-content">
+                    De keuken is 7 dagen per week geopend.<br />
+                    Lunch: {{ (openingHoursStore.openingHours$|async).lunch }}<br />
+                    Diner: {{ (openingHoursStore.openingHours$|async).dinner }}<br />
+                    Snacks: {{(openingHoursStore.openingHours$|async).snacks }}
+                </p>
+                <p *ngIf="(uiStore.language$|async) === 'en'"
+                    class="banner-text-content">
+                    Our kitchen is opened 7 days a week.<br />
+                    Lunch: {{ (openingHoursStore.openingHours$|async).lunch }}<br />
+                    Diner: {{ (openingHoursStore.openingHours$|async).dinner }}<br />
+                    Snacks: {{(openingHoursStore.openingHours$|async).snacks }}
+                </p>
+            </div>
         </div>
-        <div *ngIf="mealType == 'dinner'" class="buttons" fxLayout fxLayoutGap="1rem">
+    </section>
+
+    <div class="food-component">
+        <div class="food-component-content"
+            fxLayout>
+            <div class="admin"
+                *ngIf="authStore.isLoggedIn$|async">
+                <div style="color: red;">FOOD COMPONENT</div>
+                <button class="show-add-course-button"
+                    *ngIf="!(addingCourse$|async)"
+                    mat-raised-button
+                    (click)="onShowAddCourseDialog()">
+                    show add course dialog
+                </button>
+            </div>
+
+            <div class="customer"
+                fxLayout="column">
+                <div class="meal-type_opening-hours"
+                    fxLayout>
+                    <span class="meal-type">{{mealType}}</span>&nbsp;
+                    <div class="opening-hours"
+                        *ngIf="mealType == 'snacks'">
+                        {{(openingHoursStore.openingHours$|async).snacks}}
+                    </div>
+                    <div class="opening-hours"
+                        *ngIf="mealType == 'lunch'">
+                        {{(openingHoursStore.openingHours$|async).lunch}}
+                    </div>
+                    <div class="opening-hours"
+                        *ngIf="mealType == 'dinner'">
+                        {{(openingHoursStore.openingHours$|async).dinner}}
+                    </div>
+
+                </div>
+                <!-- <div *ngIf="mealType == 'dinner'" class="buttons" fxLayout fxLayoutGap="1rem">
           <button [ngClass]="{'button-active': (insideStore.inside$|async)}" mat-raised-button
             (click)="inside(true)">
             <span *ngIf="(uiStore.language$|async) === 'en'">menu inside</span>
@@ -67,36 +79,33 @@
             <span *ngIf="(uiStore.language$|async) === 'en'">menu outside</span>
             <span *ngIf="(uiStore.language$|async) === 'nl'">menu buiten</span>
           </button>
+        </div> -->
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="child-components" fxLayout fxLayoutGap="1rem">
-    <div
-      class="app-course-container">
-      <app-course
-        *ngFor="let course of courses$|async"
-        [course]="course"
-        [mealType]="mealType">
-      </app-course>
     </div>
 
-    <div
-      class="app-add-course-container"
-      *ngIf="addingCourse$|async">
-      <app-add-course
-        [mealType]="mealType">
-      </app-add-course>
-    </div>
+    <div class="child-components"
+        fxLayout
+        fxLayoutGap="1rem">
+        <div class="app-course-container">
+            <app-course *ngFor="let course of courses$|async"
+                [course]="course"
+                [mealType]="mealType">
+            </app-course>
+        </div>
 
-    <div
-      class="app-add-dish-container"
-      *ngIf="addingDish">
-      <app-add-dish>
+        <div class="app-add-course-container"
+            *ngIf="addingCourse$|async">
+            <app-add-course [mealType]="mealType">
+            </app-add-course>
+        </div>
 
-      </app-add-dish>
+        <div class="app-add-dish-container"
+            *ngIf="addingDish">
+            <app-add-dish>
+
+            </app-add-dish>
+        </div>
     </div>
-  </div>
 
 </div>

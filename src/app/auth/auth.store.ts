@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { User } from './models/user.model';
-import { 
-    Auth, 
-    createUserWithEmailAndPassword, 
-    signInWithEmailAndPassword, 
-    user} from '@angular/fire/auth';
+import {
+    Auth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    user
+} from '@angular/fire/auth';
 import { BehaviorSubject, from, map, Observable, pipe, tap } from 'rxjs';
 
 const AUTH_DATA = 'auth_data'
@@ -24,20 +25,20 @@ export class AuthStore {
         private auth: Auth
     ) {
         this.isLoggedIn$ = this.user$
-			.pipe(
-				map(user => !!user)
-			)
+            .pipe(
+                map(user => !!user)
+            )
 
-		this.isLoggedOut$ = this.user$
-			.pipe(
-				map(loggedIn => !loggedIn)
-			)
-		const user = localStorage.getItem(AUTH_DATA);
+        this.isLoggedOut$ = this.user$
+            .pipe(
+                map(loggedIn => !loggedIn)
+            )
+        const user = localStorage.getItem(AUTH_DATA);
 
-		if(user) {
-			this.subject.next(JSON.parse(user)) 
-		}
-     }
+        if (user) {
+            this.subject.next(JSON.parse(user));
+        }
+    }
 
     signUp(user: User) {
         createUserWithEmailAndPassword(this.auth, user.email, user.password)
@@ -45,11 +46,11 @@ export class AuthStore {
             .catch(err => console.log(err))
     }
 
- 
-    
+
+
     logIn(user) {
         return from(signInWithEmailAndPassword(this.auth, user.email, user.password))
-            .pipe (
+            .pipe(
                 tap((fireAuthUser: any) => {
                     console.log(fireAuthUser.user.email);
                     const user: User = {
@@ -59,7 +60,7 @@ export class AuthStore {
                     localStorage.setItem(AUTH_DATA, JSON.stringify(user))
                 })
             )
-              
+
     }
     logOut() {
         this.subject.next(null);
