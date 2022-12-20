@@ -1,0 +1,54 @@
+<div class="component-container">
+    <div class="dutch"
+        *ngIf="(uiStore.language$|async) === 'nl'">
+
+        <h4>Beste klanten,</h4>
+        <div class="message">
+            <p>
+                Vanwege de feestdagen is ons café gesloten op:
+            </p>
+            <ul>
+                <li>24 december vanaf 18:00</li>
+                <li>25 december</li>
+                <li>26 december</li>
+                <li>31 december vanaf 18:00</li>
+                <li><span class="blank-spot">0</span>1 januari</li>
+            </ul>
+        </div>
+    </div>
+    <div class="english"
+        *ngIf="(uiStore.language$|async) === 'en'">
+
+        <h4>Dear customers,</h4>
+        <div class="message">
+            <p>
+                Due to the holidays, our café is closed on:
+            </p>
+            <ul>
+                <li>December 24<sup>th</sup> from 18:00</li>
+                <li>December 25<sup>th</sup></li>
+                <li>December 26<sup>th</sup> </li>
+                <li>December 31<sup>st</sup> from 18:00</li>
+                <li>Januari 1<sup>st</sup></li>
+            </ul>
+        </div>
+    </div>
+    <div class="flags">
+        <div class="flag-container"
+            (click)="languageSelected('nl')">
+            <img src="./../../../assets/images/flags/nl-flag.png"
+                alt="">
+        </div>
+        <div class="flag-container"
+            (click)="languageSelected('en')">
+            <img src="./../../../assets//images//flags/uk-flag.png"
+                alt="">
+        </div>
+    </div>
+    <div class="close-window">
+        <button mat-raised-button
+            (click)="onClose()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+</div>

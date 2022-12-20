@@ -1,0 +1,35 @@
+.component-container {
+    padding: 1rem;
+    border: 3px solid var(--orange);
+
+    color: var(--bright-orange);
+    background-color: var(--blue);
+    .message {
+        // overflow: scroll;
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li {
+                .blank-spot {
+                    color: var(--blue);
+                }
+            }
+        }
+    }
+    .flags {
+        padding: 2rem;
+        display: flex;
+        justify-content: space-between;
+        .flag-container {
+            width: 4rem;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .close-window {
+        display: flex;
+        justify-content: center;
+    }
+}

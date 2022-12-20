@@ -24,6 +24,7 @@ import { SubcollectionNotEmptyDialogComponent } from './shared/subcollection-not
 import { ReactiveFormsModule } from '@angular/forms';
 import { UiStore } from './shared/stores/ui.store';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { TemporaryModalComponent } from './pages/temporary-modal/temporary-modal.component';
 
 
 
@@ -36,6 +37,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 		HomeComponent,
 		ConfirmationDialogComponent,
 		SubcollectionNotEmptyDialogComponent,
+  TemporaryModalComponent,
 
 		// LoadingComponent,
 
