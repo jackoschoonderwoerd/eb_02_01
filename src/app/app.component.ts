@@ -30,11 +30,11 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         // this.router.navigate([], { fragment: 'spirits' })
         this.orderStore.checkLocalStorage();
-        // this.dialog.open(TemporaryModalComponent, {
-        //     panelClass: 'full-screen',
-        //     maxWidth: '300px',
-        //     maxHeight: '90vh'
-        // });
+        this.dialog.open(TemporaryModalComponent, {
+            panelClass: 'full-screen',
+            maxWidth: '300px',
+            maxHeight: '90vh'
+        });
         if (this.swUpdate.isEnabled) {
             this.swUpdate.versionUpdates.subscribe(() => {
                 if (confirm('New version available. Load new version?')) {
