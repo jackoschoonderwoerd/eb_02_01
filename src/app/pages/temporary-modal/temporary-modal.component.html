@@ -2,8 +2,9 @@
     <div class="dutch"
         *ngIf="(uiStore.language$|async) === 'nl'">
 
-        <!-- <h4>Beste klanten,</h4> -->
+        <h4>Beste klanten,</h4>
         <div class="message">
+            <p>Vanaf 23 november is er een nieuwe expositie met foto's van Ringel Goslinga</p>
             <!-- <p>
                 Vanwege een personeelsuitje is het café op
             </p>
@@ -22,12 +23,13 @@
             <p>Prettige feestdagen!</p> -->
         </div>
     </div>
-    <div class="english">
+    <div class="english"
+        *ngIf="(uiStore.language$|async) === 'en'">
 
-        <!-- <h4>Dear customers,</h4> -->
+        <h4>Dear customers,</h4>
         <div class="message">
-            <img src="https://firebasestorage.googleapis.com/v0/b/eb-02-01.appspot.com/o/exhibitions%2FexhibitionTitle%2Fde_dijk.png?alt=media&token=e9f60d6e-3108-4742-9069-949c120217cb"
-                alt="">
+
+            <p>Form November 23rd there will be a new exhibition with photo's by Ringel Goslinga</p>
 
 
 
