@@ -48,15 +48,9 @@
                     {{(openingHoursStore.openingHours$|async).openingHoursOpen}}
                     <span *ngIf="(uiStore.language$|async) === 'nl'">tot</span>
                     <span *ngIf="(uiStore.language$|async) === 'en'">until</span>
-
-
                     &nbsp;{{(openingHoursStore.openingHours$|async).openingHoursClose}}
                 </div>
-                <div class="closing-sunday-monday">
-                    <span *ngIf="(uiStore.language$|async) === 'nl'">Op zondag en maandag zijn wij open tot</span>
-                    <span *ngIf="(uiStore.language$|async) === 'en'">On Sundays and Mondays we are open until</span>
-                    {{(openingHoursStore.openingHours$|async).closingHoursMondaySunday}}
-                </div>
+
                 <div>
                     <span *ngIf="(uiStore.language$|async) === 'nl'">Op vrijdag en zaterdag van</span>
                     <span *ngIf="(uiStore.language$|async) === 'en'">On Fridays and Saturdays from</span>
@@ -66,6 +60,16 @@
                     <span *ngIf="(uiStore.language$|async) === 'en'">until</span>
                     &nbsp;{{(openingHoursStore.openingHours$|async).openingHoursWeekendClose}}
                 </div>
+
+                <div class="closing-sunday-monday">
+                    <span *ngIf="(uiStore.language$|async) === 'nl'">Op zondag en maandag zijn wij open van</span>
+                    <span *ngIf="(uiStore.language$|async) === 'en'">On Sundays and Mondays we are open from</span>
+                    {{(openingHoursStore.openingHours$|async).openingHoursOpen}}
+                    <span *ngIf="(uiStore.language$|async) === 'nl'">tot</span>
+                    <span *ngIf="(uiStore.language$|async) === 'en'">until</span>
+                    &nbsp;{{(openingHoursStore.openingHours$|async).closingHoursMondaySunday}}
+                </div>
+
 
                 <div>Lunch: {{(openingHoursStore.openingHours$|async).lunch}}</div>
                 <div>Snacks: {{(openingHoursStore.openingHours$|async).snacks}}</div>
