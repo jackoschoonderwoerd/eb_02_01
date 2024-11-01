@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
 
     }
     ngOnInit(): void {
-        // this.router.navigate([], { fragment: 'spirits' })
+
         this.orderStore.checkLocalStorage();
         // this.dialog.open(TemporaryModalComponent, {
         //     panelClass: 'full-screen',
