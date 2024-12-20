@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UiStore } from '../../shared/stores/ui.store';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Anouncements } from '../anouncements/anouncements.component';
 
 @Component({
     selector: 'app-temporary-modal',
@@ -9,15 +10,18 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class TemporaryModalComponent implements OnInit {
 
+    dutchAnouncement: string = ''
+
     constructor(
         public uiStore: UiStore,
-        private dialogRef: MatDialogRef<TemporaryModalComponent>
+        private dialogRef: MatDialogRef<TemporaryModalComponent>,
+        @Inject(MAT_DIALOG_DATA) private anouncements: Anouncements
     ) { }
 
     ngOnInit(): void {
-        this.uiStore.language$.subscribe((language: string) => {
-            console.log(language);
-        })
+        console.log(this.anouncements)
+
+
     }
     languageSelected(language: string) {
         if (language === 'nl') {
@@ -29,4 +33,6 @@ export class TemporaryModalComponent implements OnInit {
     onClose() {
         this.dialogRef.close();
     }
+
+
 }

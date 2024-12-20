@@ -1,121 +1,127 @@
-<mat-toolbar class="header-container" fxLayout fxLayoutAlign="space-between">
-  <div class="toolbar-left" fxLayout>
-    <ul
-      class="ul-left"
-      fxLayout
-      fxLayoutGap="1rem">
-      <li fxHide.gt-sm (click)="onToggleSidenav()">
-        <i class="fas fa-bars"></i>
-        <!-- <mat-icon (click)="onToggleSidenav()">menu</mat-icon> -->
-      </li>
-      <li fxHide.lt-md>
-        <a
-          routerLink="home"
-          routerLinkActive="link-active">
-          <span>home</span>
-        </a>
-      </li>
-      <li class="table"
-        *ngIf="(order$|async) && (order$|async).tableNumber != null"
-        fxLayout
-        fxLayoutGap=" .3rem"
-        (click)="onOrder()">
-        <div class="table">table</div>
-        <div class="table-number"> {{(orderStore.order$|async).tableNumber}}</div>
-      </li>
-    </ul>
-  </div>
+<mat-toolbar class="header-container"
+    fxLayout
+    fxLayoutAlign="space-between">
+    <div class="toolbar-left"
+        fxLayout>
+        <ul class="ul-left"
+            fxLayout
+            fxLayoutGap="1rem">
+            <li fxHide.gt-sm
+                (click)="onToggleSidenav()">
+                <i class="fas fa-bars"></i>
+                <!-- <mat-icon (click)="onToggleSidenav()">menu</mat-icon> -->
+            </li>
+            <li fxHide.lt-md>
+                <a routerLink="home"
+                    routerLinkActive="link-active">
+                    <span>home</span>
+                </a>
+            </li>
+            <li class="table"
+                *ngIf="(order$|async) && (order$|async).tableNumber != null"
+                fxLayout
+                fxLayoutGap=" .3rem"
+                (click)="onOrder()">
+                <div class="table">table</div>
+                <div class="table-number"> {{(orderStore.order$|async).tableNumber}}</div>
+            </li>
+        </ul>
+    </div>
 
-  <div class="toolbar-right" fxLayout>
-    <ul
-      fxHide.lt-md
-      class="ul-right"
-      fxLayout
-      fxLayoutGap="1rem">
-      <li>
-        <a
-          routerLink="exhibitions"
-          routerLinkActive="link-active">
-          <span *ngIf="(uiStore.language$|async) === 'en'">exhibitions</span>
-          <span *ngIf="(uiStore.language$|async) === 'nl'">exposities</span>
-        </a>
-      </li>
-      <li>
-        <a
-          routerLink="beers"
-          routerLinkActive="link-active">
-          <span *ngIf="(uiStore.language$|async) === 'en'">beers</span>
-          <span *ngIf="(uiStore.language$|async) === 'nl'">bieren</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="drinks"
-          routerLinkActive="link-active">
-          <span *ngIf="(uiStore.language$|async) === 'en'">drinks</span>
-          <span *ngIf="(uiStore.language$|async) === 'nl'">dranken</span>
-        </a>
-      </li>
-      <li>
-        <a
-          [routerLink]="['food']"
-          [queryParams]="{mealType: 'snacks'}"
-          routerLinkActive="link-active">
-          <span>snacks</span>
-        </a>
-      </li>
-      <li>
-        <a [routerLink]="['food']"
-          [queryParams]="{mealType: 'lunch'}"
-          routerLinkActive="link-active">
-          <span>lunch</span>
-        </a>
-      </li>
-      <li (click)="onDinner()">
-        <a [routerLink]="['food']"
-          [queryParams]="{mealType: 'dinner'}"
-          routerLinkActive="link-active">
-          <span *ngIf="(uiStore.language$|async) === 'en'">dinner</span>
-          <span *ngIf="(uiStore.language$|async) === 'nl'">diner</span>
-        </a>
-      </li>
-      <li *ngIf="authStore.isLoggedIn$|async">
-        <a
+    <div class="toolbar-right"
+        fxLayout>
+        <ul fxHide.lt-md
+            class="ul-right"
+            fxLayout
+            fxLayoutGap="1rem">
+            <li *ngIf="authStore.isLoggedIn$|async">
+                <a routerLink="anouncements"
+                    routerLinkActive="link-active">
+                    <span>anouncements</span>
 
-          routerLink="company/bar"
-          routerLinkActive="link-active">
-          <span>bar</span>
-        </a>
-      </li>
-      <li class="login" *ngIf="authStore.isLoggedOut$|async">
-        <a
-          routerLink="auth/login"
-          routerLinkActive="link-active">
-          <span>log in</span>
-        </a>
-      </li>
-      <li *ngIf="authStore.isLoggedIn$|async" (click)="onLogOut()"><span>log out</span></li>
+                </a>
+            </li>
+            <li>
+                <a routerLink="exhibitions"
+                    routerLinkActive="link-active">
+                    <span *ngIf="(uiStore.language$|async) === 'en'">exhibitions</span>
+                    <span *ngIf="(uiStore.language$|async) === 'nl'">exposities</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink="beers"
+                    routerLinkActive="link-active">
+                    <span *ngIf="(uiStore.language$|async) === 'en'">beers</span>
+                    <span *ngIf="(uiStore.language$|async) === 'nl'">bieren</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink="drinks"
+                    routerLinkActive="link-active">
+                    <span *ngIf="(uiStore.language$|async) === 'en'">drinks</span>
+                    <span *ngIf="(uiStore.language$|async) === 'nl'">dranken</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['food']"
+                    [queryParams]="{mealType: 'snacks'}"
+                    routerLinkActive="link-active">
+                    <span>snacks</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['food']"
+                    [queryParams]="{mealType: 'lunch'}"
+                    routerLinkActive="link-active">
+                    <span>lunch</span>
+                </a>
+            </li>
+            <li (click)="onDinner()">
+                <a [routerLink]="['food']"
+                    [queryParams]="{mealType: 'dinner'}"
+                    routerLinkActive="link-active">
+                    <span *ngIf="(uiStore.language$|async) === 'en'">dinner</span>
+                    <span *ngIf="(uiStore.language$|async) === 'nl'">diner</span>
+                </a>
+            </li>
+            <li *ngIf="authStore.isLoggedIn$|async">
+                <a routerLink="company/bar"
+                    routerLinkActive="link-active">
+                    <span>bar</span>
+                </a>
+            </li>
+            <li class="login"
+                *ngIf="authStore.isLoggedOut$|async">
+                <a routerLink="auth/login"
+                    routerLinkActive="link-active">
+                    <span>log in</span>
+                </a>
+            </li>
+            <li *ngIf="authStore.isLoggedIn$|async"
+                (click)="onLogOut()"><span>log out</span></li>
 
-    </ul>
-    <ul class="flags" fxLayout fxLayoutGap="1rem">
-      <li
-        class="flag nl-flag"
+        </ul>
+        <ul class="flags"
+            fxLayout
+            fxLayoutGap="1rem">
+            <li class="flag nl-flag"
+                (click)="onChangeLanguage('nl')">
+                <div class="image-container">
+                    <img [ngClass]="{'flag-active': (uiStore.language$|async) === 'nl'}"
+                        src="./../../../assets//images/flags/nl-flag.png"
+                        alt="">
+                </div>
 
-        (click)="onChangeLanguage('nl')">
-        <div class="image-container">
-          <img [ngClass]="{'flag-active': (uiStore.language$|async) === 'nl'}"
-            src="./../../../assets//images/flags/nl-flag.png" alt="">
-        </div>
+            </li>
+            <li class="flag uk-flag"
+                (click)="onChangeLanguage('en')">
+                <div class="image-container">
+                    <img [ngClass]="{'flag-active': (uiStore.language$|async) === 'en'}"
+                        src="./../../../assets/images/flags/uk-flag.png"
+                        alt="">
+                </div>
 
-      </li>
-      <li class="flag uk-flag"
-
-        (click)="onChangeLanguage('en')">
-        <div class="image-container">
-          <img [ngClass]="{'flag-active': (uiStore.language$|async) === 'en'}"
-            src="./../../../assets/images/flags/uk-flag.png" alt="">
-        </div>
-
-      </li>
-    </ul>
-  </div>
+            </li>
+        </ul>
+    </div>
 </mat-toolbar>

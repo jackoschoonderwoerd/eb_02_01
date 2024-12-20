@@ -24,45 +24,61 @@ import { SubcollectionNotEmptyDialogComponent } from './shared/subcollection-not
 import { ReactiveFormsModule } from '@angular/forms';
 import { UiStore } from './shared/stores/ui.store';
 import { ServiceWorkerModule } from '@angular/service-worker';
+// import { TemporaryModalComponent } from './pages/temporary-modal/temporary-modal.component';
+import { AnouncementsComponent } from './pages/anouncements/anouncements.component';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { TemporaryModalComponent } from './pages/temporary-modal/temporary-modal.component';
+import { PreviewDutchComponent } from './pages/anouncements/preview-dutch/preview-dutch.component';
+import { PreviewEnglishComponent } from './pages/anouncements/preview-english/preview-english.component';
+
+// import { AnuouncementsComponent } from './pages/anuouncements/anuouncements.component';
+;
 
 
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		HeaderComponent,
-		SidenavComponent,
-		FooterComponent,
-		HomeComponent,
-		ConfirmationDialogComponent,
-		SubcollectionNotEmptyDialogComponent,
-  TemporaryModalComponent,
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        SidenavComponent,
+        FooterComponent,
+        HomeComponent,
+        ConfirmationDialogComponent,
+        SubcollectionNotEmptyDialogComponent,
+        TemporaryModalComponent,
+        AnouncementsComponent,
+        PreviewDutchComponent,
+        PreviewEnglishComponent,
 
-		// LoadingComponent,
 
-	],
-	imports: [
-		MatIconModule,
-		BrowserModule,
-		AppRoutingModule,
-		BrowserAnimationsModule,
-		FlexLayoutModule,
-		AppMaterialModule,
-		provideFirebaseApp(() => initializeApp(environment.firebase)),
-		provideAuth(() => getAuth()),
-		provideFirestore(() => getFirestore()),
-		provideFunctions(() => getFunctions()),
-		provideStorage(() => getStorage()),
-		ReactiveFormsModule,
-		ServiceWorkerModule.register('ngsw-worker.js', {
-			enabled: environment.production,
-			// Register the ServiceWorker as soon as the application is stable
-			// or after 30 seconds (whichever comes first).
-			registrationStrategy: 'registerWhenStable:30000'
-		})
-	],
-	providers: [],
-	bootstrap: [AppComponent]
+        //   AnouncementsComponent,
+
+        // LoadingComponent,
+
+    ],
+    imports: [
+
+        CommonModule,
+        MatIconModule,
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        FlexLayoutModule,
+        AppMaterialModule,
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideAuth(() => getAuth()),
+        provideFirestore(() => getFirestore()),
+        provideFunctions(() => getFunctions()),
+        provideStorage(() => getStorage()),
+        ReactiveFormsModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        })
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

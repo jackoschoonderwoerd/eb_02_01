@@ -1,98 +1,14 @@
 <div class="component-container">
     <div class="dutch"
-        *ngIf="(uiStore.language$|async) === 'nl'">
-
-        <h4>Lieve gasten,</h4>
-        <div class="message">
-
-            <p>
-                Maandag 28 oktober zijn wij ivm een personeelsuitje gesloten.
-            </p>
-            <p>
-                Tot gauw!
-            </p>
-            <p>
-                Team De Engelbewaarder
-            </p>
-
-
-
-
-            <!-- <p>
-                Op 25 en 26 december gesloten.
-            </p>
-            <p>
-                Op 31 december sluiten wij om 18:00.
-            </p>
-            <p>
-                Dinsdag 2 januari zijn wij weer geopend!
-            </p> -->
-            <!-- <p>
-                Vanwege een personeelsuitje is het café op
-            </p>
-            <h3>maandag 28 augustus</h3>
-            <p>gesloten.</p> -->
-            <!-- <p>
-                Vanwege de feestdagen is ons café gesloten op:
-            </p>
-            <ul>
-                <li>24 december vanaf 18:00</li>
-                <li>25 december</li>
-                <li>26 december</li>
-                <li>31 december vanaf 18:00</li>
-                <li><span class="blank-spot">0</span>1 januari</li>
-            </ul>
-            <p>Prettige feestdagen!</p> -->
-        </div>
+        *ngIf="(uiStore.language$|async) === 'nl'"
+        [innerHTML]="anouncements.anouncementDutch">
     </div>
     <div class="english"
-        *ngIf="(uiStore.language$|async) === 'en'">
-
-        <h4>Dear customers,</h4>
-        <div class="message">
-
-            <p>
-                Due to a company trip, we will be closed on Monday October 23<sup>rd</sup><br>
-                <p>
-                    Hope to see you soon,
-                    <!-- July, Monday 8<sup>th</sup>, 15<sup>th</sup>, 22<sup>th</sup> and 29<sup>th</sup>,<br> -->
-                </p>
-                <p>
-
-                    Team De Engelbewaarder
-                </p>
-
-                <!-- <p>
-                We are closed on December 25 and 26.
-            </p>
-            <p>
-                On December 31 we close at 6:00 PM.
-            </p>
-            <p>
-                We will be open again on Tuesday January 2!
-            </p> -->
+        *ngIf="(uiStore.language$|async) === 'en'"
+        [innerHTML]="anouncements.anouncementEnglish">
 
 
 
-
-
-
-
-                <!-- <p>Due to a company event, our cafe will be closed on</p> -->
-                <!-- <h3>monday, August 28<sup>th</sup>.</h3> -->
-                <!-- <p>
-                Due to the holidays, our café is closed on:
-            </p>
-            <ul>
-                <li>December 24<sup>th</sup> from 18:00</li>
-                <li>December 25<sup>th</sup></li>
-                <li>December 26<sup>th</sup> </li>
-                <li>December 31<sup>st</sup> from 18:00</li>
-                <li>Januari 1<sup>st</sup></li>
-            </ul>
-        </div>
-        <p>Happy holidays!</p> -->
-        </div>
     </div>
     <div class="flags">
         <div class="flag-container"
